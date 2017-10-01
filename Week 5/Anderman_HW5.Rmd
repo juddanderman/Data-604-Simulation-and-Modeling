@@ -1,0 +1,221 @@
+---
+title: 'Data 604 Homework 5'
+author: "Judd Anderman"
+date: "October 1, 2017"
+output: html_document
+---
+
+#### Kelton et al. (2014).  Simio and Simulation: Modeling, Analysis, Applications (3rd Ed.)
+
+Chapter 4: Problems 2, 3, 9 & 12
+
+```{r setup, message = FALSE, warning = FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+```
+
+4.2\) Develop a queueing model for the Simio model from Problem 1 and compute the exact values for the steady state time entities spend in the system and the expected number of entities processed in 100 hours.
+
+```{r problem-2}
+lambda <- 120 / 60
+mu <- 190 / 60
+
+rho <- lambda / mu
+L <- rho / (1 - rho)
+W <- L / lambda
+W_q <- W - (1 / mu)
+L_q <- W_q * lambda
+
+N_100hrs <- lambda * 100 * 60
+
+knitr::kable(data.frame(W = W, W_q = W_q, L = L, L_q = L_q, rho = rho, N_100hrs = N_100hrs))
+```
+
+```{r problem-2-sim, eval = FALSE}
+# very slow to execute adaptation of manual simulation from model 3-4
+# output from single, 100-hour run saved in this chunk and loaded in next 
+
+getTimes <- function(lambda, mu, end_min) {
+  n <- 1e5
+  times <- data.frame(entity = seq(length.out = n), 
+                      arrival = numeric(n), 
+                      interarrival = numeric(n),
+                      service = numeric(n))
+  times[1, 2:3] <- c(0, 0)
+  times[1:n, ]$service <- rexp(n, mu)
+  times[2:n, ]$interarrival <- rexp(n - 1, lambda)
+  for(i in 2:n) {
+    times[i, ]$arrival <- times[i - 1, ]$arrival + times[i, ]$interarrival
+    if (times[i, ]$arrival >= end_min) {
+      break
+    }
+  }
+  times <- times[1:i, ]
+  
+  return(times)
+}
+
+sim <- function(lambda, mu, end_min) {
+  times <- getTimes(lambda, mu, end_min)
+  n <- 5e4
+  event_cal <- data.frame(arrival = rep(NA_real_, n),
+                          departure = rep(NA_real_, n),
+                          end = rep(end_min, n))
+  
+  system <- data.frame(event_time = numeric(n), 
+                       event_type = numeric(n),
+                       entity = integer(n),
+                       server_status = logical(n),
+                       in_system = integer(n),
+                       in_queue = integer(n),
+                       in_service = numeric(n),
+                       queue_times = I(vector("list", n)))
+  
+  observations <- data.frame(time_in_system = rep(NA_real_, n),
+                             time_in_queue = rep(NA_real_, n),
+                             server_busy = numeric(n),
+                             number_in_system = numeric(n),
+                             number_in_queue = numeric(n))
+  
+  event_cal[1, ] <- c(times[1, ]$arrival, NA_integer_, end_min) 
+  system[1, c(1, 3, 5:7)] <- c(0, NA_integer_, 0, 0, NA_integer_)
+  system[1, ]$event_type <- "initialize"
+  system[1, ]$server_status <- FALSE
+  observations[1, ] <- c(NA_integer_, NA_integer_, 0, 0, 0)
+  
+  for (i in 2:n) {
+    system[i, ]$event_time <- min(event_cal[i - 1, ], na.rm = TRUE)
+    system[i, ]$event_type <- colnames(event_cal)[which.min(event_cal[i - 1, ])]
+  
+    if(system[i, ]$event_type == "end") {
+      break
+    }
+    
+    if(system[i, ]$event_type == "arrival") {
+      system[i, ]$entity <- max(times[times$arrival == system[i, ]$event_time, ]$entity)
+      event_cal[i, ]$arrival <- times[times$entity == system[i, ]$entity + 1, ]$arrival
+      system[i, ]$in_system <- system[i - 1, ]$in_system + 1
+      
+      observations[i, ]$server_busy <- 
+        (system[i, ]$event_time - system[i - 1, ]$event_time) *  system[i - 1, ]$server_status
+      observations[i, ]$number_in_system <- 
+        (system[i, ]$event_time - system[i - 1, ]$event_time) *  system[i - 1, ]$in_system
+      observations[i, ]$number_in_queue <- 
+        (system[i, ]$event_time - system[i - 1, ]$event_time) *  system[i - 1, ]$in_queue
+      
+      if (system[i - 1, ]$server_status == FALSE) {
+        system[i, ]$in_service <- times[times$entity == system[i, ]$entity, ]$arrival
+        event_cal[i, ]$departure <- 
+          system[i, ]$event_time + times[times$entity == system[i, ]$entity, ]$service
+        observations[i, ]$time_in_queue <- 0
+      } else {
+        system[i, ]$in_service <- max(unlist(system$in_service), na.rm = TRUE)
+        system$queue_times[i] <- system$queue_times[i - 1]
+        system$queue_times[[i]][system[i - 1, ]$in_queue + 1] <- 
+          times[times$entity == system[i, ]$entity, ]$arrival
+        system[i, ]$in_queue <- system[i - 1, ]$in_queue + 1
+        event_cal[i, ]$departure <- max(event_cal$departure, na.rm = TRUE)
+      }
+      
+      system[i, ]$server_status <- TRUE
+      
+    } else {
+      system[i, ]$entity <- times[times$arrival == system[i - 1, ]$in_service, ]$entity
+      
+      observations[i, ]$server_busy <- 
+          (system[i, ]$event_time - system[i - 1, ]$event_time) *  system[i - 1, ]$server_status
+      observations[i, ]$number_in_system <- 
+        (system[i, ]$event_time - system[i - 1, ]$event_time) *  system[i - 1, ]$in_system
+      observations[i, ]$number_in_queue <- 
+        (system[i, ]$event_time - system[i - 1, ]$event_time) *  system[i - 1, ]$in_queue
+      
+      observations[i, ]$time_in_system <- 
+        system[i, ]$event_time - times[times$entity == system[i, ]$entity, ]$arrival
+      
+      system[i, ]$in_system <- system[i - 1, ]$in_system - 1 
+      event_cal[i, ]$arrival <- max(event_cal$arrival, na.rm = TRUE)
+      
+      if (system[i - 1, ]$in_queue > 0) {
+        system[i, ]$in_service <- unlist(system$queue_times[[i - 1]][1])
+        system$queue_times[[i]] <- system$queue_times[[i - 1]][-1]
+        event_cal[i, ]$departure <- 
+          system[i, ]$event_time + times[times$entity == system[i, ]$entity, ]$service
+        system[i, ]$server_status <- TRUE
+        observations[i, ]$time_in_queue <- system[i, ]$event_time - system[i, ]$in_service
+      } else {
+        system[i, ]$in_service <- 
+          ifelse(is.null(unlist(system$queue_times[[i - 1]][1])), 
+                 NA_real_, unlist(system$queue_times[[i - 1]][1]))
+        system[i, ]$server_status <- FALSE
+        event_cal[i + 1, ]$departure <- NA_real_
+      }
+    }
+    system[i, ]$in_queue <- system[i, ]$in_system - system[i, ]$server_status
+  }
+  system <- system[1:i, ]
+  event_cal <- event_cal[1:i, ]
+  observations <- observations[1:i, ]
+  return(list(times, system, event_cal, observations))
+}
+
+end_min <- 60 * 100
+results <- sim(lambda, mu, end_min)
+results[[5]] <- end_min
+save(results, file = "problem2_results.R")
+```
+
+```{r load-results}
+load("problem2_results.R")
+```
+
+```{r problem-2-manual-sim-results}
+# manual simulation results
+times <- results[[1]]
+system <- results[[2]]
+event_cal <- results[[3]]
+observations <- results[[4]]
+end_min <- results[[5]]
+
+head(times)
+head(system)
+head(event_cal)
+head(observations)
+
+averages <- observations %>%
+  summarize(time_in_system = mean(time_in_system, na.rm = TRUE),
+            time_in_queue = mean(time_in_queue, na.rm = TRUE),
+            number_in_system = sum(number_in_system) / end_min,
+            number_in_queue = sum(number_in_queue) / end_min,
+            utilization = sum(server_busy) / end_min)
+
+num_entities <- max(system$entity, na.rm = TRUE)
+
+knitr::kable(cbind(averages, num_entities))
+```
+
+![Results of 100-hour long simulation run once in Simio](Problem2_Results.png)
+
+4.3\) Using the model from Problem 1, create an experiment that includes 100 replications.  Run the experiement and observe the SMORE plot for the time entities spend in the system.  Experiment with the various SMORE plot settings - viewing the histogram, rotating the plot, changing the upper and lower perecentile values.  
+
+![Results of experiment with 100 iterations of 100-hour simulation](Problem3_Results.png)
+
+![SMORE plot of average time in system with upper and lower percentiles of 75% and 25%](SMORE_25_75.png)
+
+![SMORE plot of average time in system with upper and lower percentiles of 90% and 10%](SMORE_10_90.png)
+
+![Rotated SMORE plot of average time in system with histogram overlay](SMORE_Rotated_Histogram.png)
+
+4.9\) Replicate the model from Problem 1 using Simio processes (i.e., not using objects from the Standard Library).  Compare the run times for this model and the model from Problem 1 for 50 replications of length 100 hours.
+
+50 replications using the model built from Simio processes executed in 14.2 seconds, more than 3 times faster than 50 replications of the model built from Standard Library objects.  
+
+![Run time of 50 replications of 100-hour simulation modeled with processes](Processes_Runtime.png)
+
+![Run time of 50 replications of 100-hour simulation modeled with Standard Library objects](Standard_Library_Objects_Runtime.png)
+
+![Results of experiment on model built using processes with 50 replications of length 100 hours](Processes_Experiment_Results.png)
+
+4.12\) Animate your model from Problem 1 assuming that you are modeling a cashier at a fast food restaurant - the entities represent customers and the server represents the cashier at the cash register.  Use Simio's standard symbols for your animation.  
+
+![Fast food restaurant animation](Animation.png)
