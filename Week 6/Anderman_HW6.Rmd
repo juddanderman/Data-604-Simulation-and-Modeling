@@ -1,0 +1,49 @@
+---
+title: "Data 604 Homework 6"
+author: "Judd Anderman"
+date: "October 8, 2017"
+output: html_document
+---
+
+#### Kelton et al. (2014).  Simio and Simulation: Modeling, Analysis, Applications (3rd Ed.)
+
+Chapter 5: Problems 1, 2, 3, 4 & 5
+
+5.1\) An object _property_ is an input value or distribution of values specified when an object is instantiated, for example, a source object's interarrival time.  An object _state_ is a dynamic value that changes as a model executes, for example, the busy/idle status of a server.  
+
+5.2\) A token's _parent_ object is the instance of the object in which the process is defined.  A token's _associated_ object is a related object distinct from the _parent_ object that triggers execution of the process. 
+
+5.3\) 
+
+![Problem 5.3 model design](Problem_5.3_Model.png)
+
+![Problem 5.3 results of 25 replications each with length 1200 hours and a 200 hour warm-up period](Problem_5.3_Results.png)
+
+5.4\) 
+
+As shown below, the half-widths for the 95% confidence interval on the average time spent by customers in the drivers' license office system decrease by a factor of roughly $\sqrt{n}$ for each increase in $n$ times as many replications.  The appropriate number of replications to perform in this case depends on one's preferences or needs with regard to the precision of the resulting estimates of the performance metrics of interest.  An experiment with 1000 replications of the 8-hour long business day in the office system executed in 24.7 seconds on my machine and produced an estimate of average time in system with a 95% confidence interval width under one minute, which seemed like a reasonable tradeoff between precision and runtime in this case.  
+
+
+```{r problem-4}
+res <- data.frame(replications = c(10, 25, 50, 100, 200, 300, 400, 500, 1000),
+                  avg_time_in_system = c(37.2818, 39.2450, 39.7799, 
+                                         39.9207, 40.8356, 40.9808, 
+                                         40.7400, 40.6820, 40.5599),
+                  half_width = c(3.9656, 2.6900, 1.8699, 
+                                 1.3096,1.0555, 0.9029, 
+                                 0.7653, 0.6762, 0.4923))
+
+knitr::kable(res, caption = "Average time in system results versus number of replications")
+
+par(mfrow = c(1, 2))
+plot(avg_time_in_system ~ replications, data = res, type = "b")
+plot(half_width ~ replications, data = res, type = "b" )
+```
+
+![Results of 1000 replications of a simulated 8-hour day at DMV office](DMV_Model_Results.png)
+
+![SMORE plot for average time in system from 1000 replications](SMORE_TIS_1000_Runs.png)
+
+5.5\)
+
+![DMV office animation](DMV_Model_Animation.png)
