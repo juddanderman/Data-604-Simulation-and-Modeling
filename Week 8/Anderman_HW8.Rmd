@@ -1,0 +1,623 @@
+---
+title: "Data 604 Homework 8"
+author: "Judd Anderman"
+date: "October 22, 2017"
+output: html_document
+header-includes:
+   - \usepackage{amsmath}
+---
+
+#### Kelton et al. (2014).  Simio and Simulation: Modeling, Analysis, Applications (3rd Ed.)
+
+Chapter 6: Problems 1, 2, 3, 4, 5 & 8
+
+```{r setup, message = FALSE, warning = FALSE}
+# set working directory as needed
+setwd("~/DATA 604 Simulation and Modeling Techniques/Week 8")
+library(xlsx) # to read in .xls data
+library(ggplot2)
+library(MASS)
+library(dplyr)
+library(tidyr)
+```
+
+6.1\)
+
+```{r problem-1, message = FALSE, warning = FALSE}
+interarrival <- read.xlsx("Problem_Dataset_06_01.xls", 1, header = FALSE)
+colnames(interarrival) <- "time"
+
+e_fit <- fitdistr(interarrival$time, "exponential")
+g_fit <- fitdistr(interarrival$time, "gamma")
+lnrm_fit <- fitdistr(interarrival$time, "lognormal")
+w_fit <- fitdistr(interarrival$time, "weibull")
+
+ggplot(interarrival, aes(time)) +
+  geom_histogram(aes(y = ..density..)) +
+  geom_line(stat = "density", aes(color = "empirical density", linetype = "empirical density")) +
+  stat_function(fun = dexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = dgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]), 
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = dlnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = dweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]), 
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical density" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical density", 
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical density" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical density", 
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "time (minutes)")
+
+ks.test(interarrival$time, "pexp", e_fit$estimate[1])
+ks.test(interarrival$time, "pgamma", g_fit$estimate[1], g_fit$estimate[2])
+ks.test(interarrival$time, "plnorm", lnrm_fit$estimate[1], lnrm_fit$estimate[2])
+ks.test(interarrival$time, "pweibull", w_fit$estimate[1], w_fit$estimate[2])
+
+ggplot(interarrival, aes(time)) +
+  stat_ecdf(aes(color = "empirical cumulative distribution", 
+                linetype = "empirical cumulative distribution")) +
+  stat_function(fun = pexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = pgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]), 
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = plnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = pweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]), 
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical cumulative distribution" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical cumulative distribution", 
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical cumulative distribution" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical cumulative distribution", 
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "time (minutes)", y = "cumulative probability")
+
+ggplot(interarrival) +
+  geom_line(aes(x = ppoints(length(time), 1),
+                y = pexp(sort(time), e_fit$estimate[1]),
+                color = "exponential")) +
+  geom_line(aes(x = ppoints(length(time), 1),
+                y = pgamma(sort(time), g_fit$estimate[1], g_fit$estimate[2]),
+                color = "gamma")) +
+  geom_line(aes(x = ppoints(length(time), 1),
+                y = plnorm(sort(time), lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                color = "log normal")) +
+  geom_line(aes(x = ppoints(length(time), 1),
+                y = pweibull(sort(time), w_fit$estimate[1], w_fit$estimate[2]),
+                color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "P-P Plot", x = "sample probability", y = "theoretical probability")
+
+# manual q-q plot
+# ggplot(interarrival) +
+#   geom_point(aes(x = qexp(ppoints(length(time), 1), e_fit$estimate[1]),
+#                  y = sort(time)))
+
+ggplot(interarrival, aes(sample = time)) +
+  stat_qq(distribution = qexp, 
+          dparams = list(e_fit$estimate[1]), 
+          geom = "line",
+          aes(color = "exponential")) +
+  stat_qq(distribution = qgamma, 
+          dparams = list(g_fit$estimate[1], g_fit$estimate[2]), 
+          geom = "line",
+          aes(color = "gamma")) +
+  stat_qq(distribution = qlnorm, 
+          dparams = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+          geom = "line",
+          aes(color = "log normal")) +
+  stat_qq(distribution = qweibull, 
+          dparams = list(w_fit$estimate[1], w_fit$estimate[2]), 
+          geom = "line",
+          aes(color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "Q-Q Plot")
+```
+
+Kolmogorovi-Smirnov goodness-of-fit testing and examination of probability plots for the fitted distributions indicate that the log normal distribution whose logarithm has mean and standard deviation of `r lnrm_fit$estimate[1]` and `r lnrm_fit$estimate[2]` respectively, provides the best fit against the observed interarrival times.  The Simio expression to generate random variates from this distribution is Random.Lognormal(`r lnrm_fit$estimate[1]`, `r lnrm_fit$estimate[2]`).
+
+6.2\)
+
+```{r problem-2, message = FALSE, warning = FALSE}
+service <- read.xlsx("Problem_Dataset_06_02.xls", 1, header = FALSE)
+colnames(service) <- "time"
+
+e_fit <- fitdistr(service$time, "exponential")
+g_fit <- fitdistr(service$time, "gamma")
+lnrm_fit <- fitdistr(service$time, "lognormal")
+w_fit <- fitdistr(service$time, "weibull")
+
+ggplot(service, aes(time)) +
+  geom_histogram(aes(y = ..density..)) +
+  geom_line(stat = "density", aes(color = "empirical density", linetype = "empirical density")) +
+  stat_function(fun = dexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = dgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]), 
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = dlnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = dweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]), 
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical density" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical density", 
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical density" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical density", 
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "time (minutes)")
+
+ks.test(service$time, "pexp", e_fit$estimate[1])
+ks.test(service$time, "pgamma", g_fit$estimate[1], g_fit$estimate[2])
+ks.test(service$time, "plnorm", lnrm_fit$estimate[1], lnrm_fit$estimate[2])
+ks.test(service$time, "pweibull", w_fit$estimate[1], w_fit$estimate[2])
+
+ggplot(service, aes(time)) +
+  stat_ecdf(aes(color = "empirical cumulative distribution", 
+                linetype = "empirical cumulative distribution")) +
+  stat_function(fun = pexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = pgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]), 
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = plnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = pweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]), 
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical cumulative distribution" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical cumulative distribution", 
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical cumulative distribution" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical cumulative distribution", 
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "time (minutes)", y = "cumulative probability")
+
+ggplot(service) +
+  geom_line(aes(x = ppoints(length(time), 1),
+                y = pexp(sort(time), e_fit$estimate[1]),
+                color = "exponential")) +
+  geom_line(aes(x = ppoints(length(time), 1),
+                y = pgamma(sort(time), g_fit$estimate[1], g_fit$estimate[2]),
+                color = "gamma")) +
+  geom_line(aes(x = ppoints(length(time), 1),
+                y = plnorm(sort(time), lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                color = "log normal")) +
+  geom_line(aes(x = ppoints(length(time), 1),
+                y = pweibull(sort(time), w_fit$estimate[1], w_fit$estimate[2]),
+                color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "P-P Plot", x = "sample probability", y = "theoretical probability")
+
+ggplot(service, aes(sample = time)) +
+  stat_qq(distribution = qexp, 
+          dparams = list(e_fit$estimate[1]), 
+          geom = "line",
+          aes(color = "exponential")) +
+  stat_qq(distribution = qgamma, 
+          dparams = list(g_fit$estimate[1], g_fit$estimate[2]), 
+          geom = "line",
+          aes(color = "gamma")) +
+  stat_qq(distribution = qlnorm, 
+          dparams = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+          geom = "line",
+          aes(color = "log normal")) +
+  stat_qq(distribution = qweibull, 
+          dparams = list(w_fit$estimate[1], w_fit$estimate[2]), 
+          geom = "line",
+          aes(color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "Q-Q Plot")
+```
+
+Kolmogorovi-Smirnov goodness-of-fit testing and examination of probability plots for the fitted distributions indicate that the log normal distribution whose logarithm has mean and standard deviation of `r lnrm_fit$estimate[1]` and `r lnrm_fit$estimate[2]` respectively, provides the best fit against the observed support call service times.  The Simio expression to generate random variates from this distribution is Random.Lognormal(`r lnrm_fit$estimate[1]`, `r lnrm_fit$estimate[2]`).
+
+6.3\)
+
+```{r problem-3, message = FALSE, warning = FALSE}
+support <- read.xlsx("Problem_Dataset_06_03.xls", 1, header = FALSE)
+colnames(support) <- "staff"
+
+unif <- c(min = min(support$staff), max = max(support$staff))
+geo <- fitdistr(support$staff, "geometric")
+nb <- fitdistr(support$staff, "negative binomial")
+
+ggplot(support, aes(staff)) +
+  geom_histogram(aes(y = ..density..)) +
+  geom_line(stat = "density", aes(color = "empirical density", linetype = "empirical density")) +
+  geom_line(aes(y = dunif(staff, min = unif[1], max = unif[2]),
+                color = "uniform", linetype = "uniform")) +
+  geom_line(aes(y = dgeom(staff, prob = geo$estimate[1]),
+                color = "geometric", linetype = "geometric")) +
+  geom_line(aes(y = dnbinom(staff, size = nb$estimate[[1]], mu = nb$estimate[[2]]),
+                color = "negative binomial", linetype = "negative binomial")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical density" = "black",
+                                "uniform" = "red",
+                                "geometric" = "blue",
+                                "negative binomial" = "green"),
+                     breaks = c("empirical density", 
+                                "uniform",
+                                "geometric",
+                                "negative binomial")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical density" = "solid",
+                                "uniform" = "dashed",
+                                "geometric" = "dashed",
+                                "negative binomial" = "dashed"),
+                     breaks = c("empirical density", 
+                                "uniform",
+                                "geometric",
+                                "negative binomial"))
+
+tab <- as.data.frame(table(factor(support$staff, levels = min(support$staff):max(support$staff))))
+
+counts <- data.frame(
+  observed = tab$Freq,
+  expected_unif = dunif(min(support$staff):max(support$staff), 
+                        min = min(support$staff), 
+                        max = max(support$staff)) * length(support$staff),
+  expected_geom = dgeom(min(support$staff):max(support$staff), 
+                        prob = geo$estimate[1]) * length(support$staff),
+  expected_nbinom = dnbinom(min(support$staff):max(support$staff),
+                            size = nb$estimate[[1]], 
+                            mu = nb$estimate[[2]]) * length(support$staff))
+row.names(counts) <- tab$Var1
+
+(t1 <- as.table(t(counts[, 1:2])))
+chisq.test(t1)
+(t2 <- as.table(t(counts[, c(1, 3)])))
+chisq.test(t2)
+(t3 <- as.table(t(counts[, c(1, 4)])))
+chisq.test(t3)
+
+ggplot(support, aes(staff)) +
+  stat_ecdf(aes(color = "empirical cumulative distribution", 
+                linetype = "empirical cumulative distribution")) +
+  stat_function(fun = punif, args = list(unif[1], unif[2]),
+                aes(color = "uniform", linetype = "uniform")) +
+  stat_function(fun = pgeom, args = list(prob = geo$estimate[1]), 
+                aes(color = "geometric", linetype = "geometric")) +
+  stat_function(fun = pnbinom, args = list(size = nb$estimate[1], mu = nb$estimate[2]),
+                aes(color = "negative binomial", linetype = "negative binomial")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical cumulative distribution" = "black",
+                                "uniform" = "red",
+                                "geometric" = "blue",
+                                "negative binomial" = "green"),
+                     breaks = c("empirical cumulative distribution", 
+                                "uniform",
+                                "geometric",
+                                "negative binomial")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical cumulative distribution" = "solid",
+                                   "uniform" = "dashed",
+                                   "geometric" = "dashed",
+                                   "negative binomial" = "dashed"),
+                        breaks = c("empirical cumulative distribution", 
+                                   "uniform",
+                                   "geometric",
+                                   "negative binomial")) +
+  labs(y = "cumulative probability")
+
+ggplot(support) +
+  geom_line(aes(x = ppoints(length(staff), 1),
+                y = punif(sort(staff), min = unif[1], max = unif[2]),
+                color = "uniform")) +
+  geom_line(aes(x = ppoints(length(staff), 1),
+                y = pgeom(sort(staff), prob = geo$estimate[1]),
+                color = "geometric")) +
+  geom_line(aes(x = ppoints(length(staff), 1),
+                y = pnbinom(sort(staff), 
+                            size = nb$estimate[1], 
+                            mu = nb$estimate[2]),
+                color = "negative binomial")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) +
+  scale_color_manual(name = "", 
+                     values = c("uniform" = "red",
+                                "geometric" = "blue",
+                                "negative binomial" = "green"),
+                     breaks = c("uniform",
+                                "geometric",
+                                "negative binomial")) +
+  labs(title = "P-P Plot", x = "sample probability", y = "theoretical probability")
+
+ggplot(support, aes(sample = staff)) +
+  stat_qq(distribution = qunif, 
+          dparams = list(min = unif[1], max = unif[2]), 
+          geom = "line",
+          aes(color = "uniform")) +
+  stat_qq(distribution = qgeom, 
+          dparams = list(prob = geo$estimate[1]), 
+          geom = "line",
+          aes(color = "geometric")) +
+  stat_qq(distribution = qnbinom, 
+          dparams = list(size = nb$estimate[1], mu = nb$estimate[2]),
+          geom = "line",
+          aes(color = "negative binomial")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("uniform" = "red",
+                                "geometric" = "blue",
+                                "negative binomial" = "green"),
+                     breaks = c("uniform",
+                                "geometric",
+                                "negative binomial")) +
+  labs(title = "Q-Q Plot")
+```
+
+Chi-squared goodness-of-fit testing and examination of probability plots for the fitted distributions indicate that the negative binomial distribution with `r nb$estimate[1]` successes and mean `r nb$estimate[2]` (i.e., with probability of success equal to `r nb$estimate[1] / (nb$estimate[1] + nb$estimate[2])`) provides the best fit against the observed counts of additional numbers of technical-support staff.  The Simio expression to generate random variates from this distribution is Random.NegativeBinomial(`r nb$estimate[1] / (nb$estimate[1] + nb$estimate[2])`, `r nb$estimate[1]`).
+
+6.4\) Derive the inverse-CDF formula for generating random variates from a continuous uniform distribution between real numbers $a$ and $b$ $(a < b)$.
+
+$F(x) = \begin{cases}
+  0, & x < a \\
+  \frac{x - a}{b - a}, & a \leq x < b \\
+  1, & x \geq b 
+\end{cases}$
+
+$F(F^{-1}(u)) = u$
+
+$\frac{F^{-1}(u) - a}{b - a} = u$
+
+$F^{-1}(u) = u(b - a) + a$
+
+```{r problem-4, message = FALSE, warning = FALSE}
+rand_unif <- function(n, a, b) {
+  if(a < b) {
+    runif(n) * (b - a) + a
+  } else {
+    "Error: a >= b"
+  }
+}
+
+df <- data.frame(x = rand_unif(10000, 1, 3))
+ggplot(df, aes(x)) +
+  geom_histogram(aes(y = ..density..)) +
+  stat_function(fun = dunif, args = list(min = 1, max = 3), 
+                color = "red", linetype = "dashed")
+```
+
+6.5\) Derive the inverse-CDF formula for generating random variates from a Weibull distribution.
+
+$F(x) = \begin{cases}
+  1 - e^{-(x / \lambda)^k}, & x \geq 0
+  0, & x < 0 
+\end{cases}$
+
+$F(F^{-1}(u)) = u$
+
+$1 - e^{-(F^{-1}(u) / \lambda)^k} = u$
+
+$-(F^{-1}(u) / \lambda)^k = ln(1 - u)$
+
+$F^{-1}^k = -ln(1 - u) \lambda^k$
+
+$F^{-1}(u) = \lambda (-ln(1 - u))^{1/k}$
+
+```{r problem-5, message = FALSE, warning = FALSE}
+rand_weibull <- function(n, scale, shape) {
+  scale * (-log(1 - runif(n)))^(1 / shape)
+}
+
+df <- data.frame(x = rand_weibull(10000, 1, 0.5))
+ggplot(df, aes(x)) +
+  geom_histogram(aes(y = ..density..), bins = 1000) +
+  stat_function(fun = dweibull, args = list(scale = 1, shape = 0.5),
+                color = "red", linetype = "dashed",
+                xlim = c(0, quantile(df$x, probs = 0.95))) +
+  coord_cartesian(xlim = c(0, quantile(df$x, probs = 0.95)))
+
+df <- data.frame(x = rand_weibull(10000, 1, 1))
+ggplot(df, aes(x)) +
+  geom_histogram(aes(y = ..density..), bins = 200) +
+  stat_function(fun = dweibull, args = list(scale = 1, shape = 1), 
+                color = "red", linetype = "dashed") +
+  coord_cartesian(xlim = c(0, quantile(df$x, probs = 0.95)))
+
+df <- data.frame(x = rand_weibull(10000, 1, 2))
+ggplot(df, aes(x)) +
+  geom_histogram(aes(y = ..density..), bins = 100) +
+  stat_function(fun = dweibull, args = list(scale = 1, shape = 2),
+                color = "red", linetype = "dashed") +
+  coord_cartesian(xlim = c(0, quantile(df$x, probs = 0.95)))
+```
+
+6.8\)
+
+```{r problem-8, message = FALSE, warning = FALSE}
+oats <- data.frame(size = c(0, 0.5, 1, 1.5, 2, 3, 4, 5, 7.5, 10),
+                   p = c(0.05, 0.07, 0.09, 0.11, 0.15, 
+                         0.25, 0.10, 0.09, 0.06, 0.03))
+
+peas <- data.frame(size = c(0, 0.5, 1, 1.5, 2, 3),
+                   p = c(0.1, 0.2, 0.2, 0.3, 0.1, 0.1))
+
+beans <- data.frame(size = c(0, 1, 3, 4.5), p = c(0.2, 0.4, 0.3, 0.1))
+
+barley <- data.frame(size = c(0, 0.5, 1, 3.5), p = c(0.2, 0.4, 0.3, 0.1))
+
+produce <- list(oats = oats, peas = peas, beans = beans, barley = barley)
+
+demand <- function(produce, n) {
+  cdf <- runif(n)
+  sapply(cdf, function(x) produce$size[min(which(cumsum(produce$p) > x))])
+}
+
+# test inverse-transform based demand() function
+(test <- prop.table(table(demand(oats, 1000))))
+ggplot(as.data.frame(test)) +
+  geom_bar(aes(factor(Var1), Freq), stat = "identity") +
+  labs(x = "oats (lbs)", y = "relative frequency")
+
+(test <- prop.table(table(demand(barley, 1000))))
+ggplot(as.data.frame(test)) +
+  geom_bar(aes(factor(Var1), Freq), stat = "identity") +
+  labs(x = "barley (lbs)", y = "relative frequency")
+
+summer <- matrix(NA, nrow = 90, ncol = 4)
+colnames(summer) <- c("oats", "peas", "beans", "barley")
+
+crp <- as.data.frame(matrix(NA, nrow = 90, ncol = 3))
+colnames(crp) <- c("cost", "revenue", "profit")
+
+cost <- c(1.05, 3.17, 1.99, 0.95)
+revenue <- c(1.29, 3.76, 2.33, 1.65)
+
+sim <- as.data.frame(matrix(NA, nrow = 100, ncol = 7))
+colnames(sim) <- c(colnames(summer), colnames(crp))
+
+for (n in 1:nrow(sim)) {
+  for (i in 1:4) {
+    summer[, i] <- demand(eval(parse(text = names(produce[i]))), 90)
+    sim[n, i] <- sum(summer[, i])
+  }
+  crp$cost <- as.numeric(summer %*% cost)
+  crp$revenue <- as.numeric(summer %*% revenue)
+  crp$profit <- crp$revenue - crp$cost
+  
+  sim[n, ]$cost <- sum(crp$cost)   
+  sim[n, ]$revenue <- sum(crp$revenue)
+  sim[n, ]$profit <- sum(crp$profit)
+}
+
+knitr::kable(summer[1:10, ], caption = "Produce demand for first 10 days of 100th simulated summer")
+
+knitr::kable(sim %>% summarize(avg_cost = mean(cost),
+                               avg_revenue = mean(revenue),
+                               avg_profit = mean(profit)),
+             caption = "Average values for 100 simulated summer seasons")
+
+res <- sim %>% 
+  mutate(summer = row_number()) %>% 
+  select(summer, cost:profit) %>%
+  gather(name, value, cost:profit)
+
+res$name <- factor(res$name, levels = c("cost", "revenue", "profit"))
+
+ggplot(res, aes(value, group = name)) +
+  geom_histogram(aes(y = ..density.., fill = name), 
+                 bins = 25, alpha = 0.6) +
+  geom_line(stat = "density", aes(color = name)) + 
+  scale_fill_manual(name = "",
+    values = c("cost" = "red", "revenue" = "blue", "profit" = "green"),
+    labels = c("Cost", "Revenue", "Profit")) +
+  scale_color_manual(name = "",
+    values = c("cost" = "red", "revenue" = "blue", "profit" = "green"),
+    labels = c("Cost", "Revenue", "Profit")) +
+  labs(x = "Dollars", 
+       y = "Count", 
+       title = paste("Distribution of Total Cost, Revenue & Profit across",
+                     "100 Simulated 90-day Summer Seasons",
+                     sep = "\n"))
+
+ggplot(res) +
+  geom_line(aes(summer, value, color = name, group = name), alpha = 0.6) +
+  scale_color_manual(name = "",
+    values = c("cost" = "red", "revenue" = "blue", "profit" = "green"),
+    labels = c("Cost", "Revenue", "Profit")) +
+  labs(x = "Summer", 
+       y = "Dollars", 
+       title = "Total Cost, Revenue & Profit for each Simulated Summer Season")
+```
