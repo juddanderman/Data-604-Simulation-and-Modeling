@@ -1,0 +1,32 @@
+---
+title: "Data 604 Homework 11"
+author: "Judd Anderman"
+date: "November 12, 2017"
+output: html_document
+---
+
+### Kelton et al. (2014).  Simio and Simulation: Modeling, Analysis, Applications (3rd Ed.)
+
+Chapter 9: Problem 2
+
+As shown below, I attempted two solutions to this problem.  In my first attempt, I used a single Interrupt step in the add-on process logic for model entities entering processing at the Trauma rooms server.  Here, all model entities representing patients of Routine, Moderate, and Severe types might have their treatment or processing at the Exam rooms server interrupted in the event of zero remaining capacity for the Doctor resource at the time of an Urgent patient's entrance into processing/treatment at the Trauma rooms server.
+
+My second attempt extended this approach by enabling conditional preemption of Doctor resources at either the Exam rooms server - where only Routine, Moderate, and Severe patients receive care - or at the Treatment rooms server - where all patients receive treatment - depending on which server station had more Doctor resource capacity seized by patients in processing at the time of an Urgent patient's arrival to the Trauma rooms server with no remaining capacity of the Doctor resource.  This required the creation of additional model state variables in order to track and compare how much resource capacity or how many doctors were in use at these two servers.  In addition, interruption of processing at the Treatment rooms server would only take place for patients with acuity below Urgent.  
+
+Developing even the simpler of these two approaches proved to be difficult in light of the relatively sparse documentation for the Interrupt add-on processes step and the greater complexity of this Emergency Department model as compared to the available SimBit solutions exploring process interruption.  In any case, the value of preemptive seizure of Doctor resources for Urgent patients entering processing at the Trauma rooms server station appears to depend on the relative capacity of Doctor and Nurse resources: decreased costs and improved wait times for Urgent patients when this preemption strategy is employed appear more likely with larger ratios of doctors to nurses.  Patient satisfaction appears to generally suffer under the preemption strategy as it causes increased wait times for all non-Urgent patients who represent 95% of the department's patient mix, though this effect was significantly smaller when the process interruption/resource preemption was allowed to take place at either the Exam or Treatment rooms servers as in my second attempted solution.     
+
+#### Solution 1
+
+![Emergency department model facility view](Facility.png)
+
+![Trauma rooms add-on processes logic with Interrupt step to release seized Doctor resources from Exam rooms for care of Urgent patients in trauma room](Trauma_Process.png)
+
+![Results of preemptive seizure of Doctor resources for Urgent patients versus first come-first serve assignment across common resource and room allocations](Results.png)
+
+#### Solution 2
+
+![Emergency department model facility view](Facility2.png)
+
+![Trauma rooms add-on processes logic with Interrupt step to release seized Doctor resources from Exam or Treatment rooms (depending on the number deployed in each) for care of Urgent patients in trauma room](Trauma_Process2.png)
+
+![Results of preemptive seizure of Doctor resources for Urgent patients versus first come-first serve assignment across common resource and room allocations](Results2.png)
