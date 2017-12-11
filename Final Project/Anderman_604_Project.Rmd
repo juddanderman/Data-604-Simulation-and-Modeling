@@ -1,0 +1,1010 @@
+---
+title: |
+  | Data 604 Final Project:
+  | Data Cleanup, Input Analysis, Model Validation & Evaluation
+author: "Judd Anderman"
+date: "December 10, 2017"
+output: html_document
+---
+
+### Load packages
+
+```{r setup, message = FALSE, warning = FALSE}
+# set working directory as needed
+setwd("~/DATA 604 Simulation and Modeling Techniques/Final Project")
+library(ggplot2)
+library(MASS)
+library(fitdistrplus)
+library(mc2d)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(lubridate)
+```
+
+### Import data
+
+```{r read-in-data}
+appts <- read.csv("Patient_Flow_Wait_Times/Appt_Scheduling_Jan_Feb_Mar.csv", stringsAsFactors = FALSE)
+enc_times <- read.csv("Patient_Flow_Wait_Times/Enc_Time_Stamps_Jan_2016.csv", stringsAsFactors = FALSE)
+no_shows <- read.csv("Patient_Flow_Wait_Times/No_Show_Rate_per_Day.csv", 
+                     stringsAsFactors = FALSE)
+providers <- read.csv("Patient_Flow_Wait_Times/Provider_Counts_Jan_Feb_Mar_2016.csv", 
+                      stringsAsFactors = FALSE)
+visits <- read.csv("Patient_Flow_Wait_Times/Visits_per_Day_Jan_2016.csv", stringsAsFactors = FALSE)
+```
+
+### No-Show Rate
+
+```{r no-show-rate}
+no_shows <- no_shows %>% 
+  mutate(No_Show_Rate = No_Shows / Total_Visits_Arrived_and_No_Show,
+         Date = ymd(Date)) %>%
+  filter(!(wday(Date, label = TRUE) %in% c("Sat", "Sun")) & ymd(Date) != ymd("2016-01-29"))
+
+knitr::kable(
+  no_shows %>% 
+  group_by(Clinic) %>% 
+  summarize(Monthly_No_Show_Rate = sum(No_Shows) / sum(Total_Visits_Arrived_and_No_Show),
+            Avg_Daily_No_Show_Rate = mean(No_Show_Rate),
+            SD_Daily_No_Show_Rate = sd(No_Show_Rate))
+  )
+
+ggplot(no_shows, aes(No_Show_Rate)) +
+  geom_histogram(bins = 10)
+  
+ggplot(no_shows, aes(Date, No_Show_Rate)) +
+  geom_line() +
+  scale_x_date()
+```
+
+### Appointment slots
+
+```{r appt-slots}
+appts_5min <- appts %>%
+  mutate(Date = ymd(Date),
+         Start_Time = hms(Start_Time),
+         End_Time = hms(End_Time))
+
+# head(appts_5min[(minute(appts_5min$Start_Time) %% 5) != 0, ])
+minute(appts_5min$Start_Time) <- round(minute(appts_5min$Start_Time) / 5) * 5
+minute(appts_5min$End_Time) <- round(minute(appts_5min$End_Time) / 5) * 5
+
+appts_5min <- appts_5min %>%
+  mutate(Start_Hr = hour(Start_Time), 
+         Start_Min = minute(Start_Time),
+         End_Hr = hour(End_Time),
+         End_Min = minute(End_Time)) %>%
+  group_by(Clinic, Date, Start_Hr, Start_Min, End_Hr, End_Min) %>%
+  summarize(Visits = sum(Total_Scheduled_Visits)) %>%
+  ungroup() %>%
+  filter(!(wday(Date, label = TRUE) %in% c("Sat", "Sun"))) %>%
+  arrange(Clinic, Date, Start_Hr, Start_Min)
+
+appts_5min <- appts_5min %>%
+  mutate(Start_Time = hm(str_c(Start_Hr, ":", Start_Min)),
+         End_Time = hm(str_c(End_Hr, ":", End_Min)))
+
+appt_len <- appts_5min %>% 
+  mutate(Duration = (End_Hr * 60) - (Start_Hr * 60) + (End_Min - Start_Min)) %>% 
+  group_by(Clinic, Duration) %>%
+  summarize(Visits = sum(Visits))
+
+knitr::kable(appt_len %>% mutate(Proportion = Visits / sum(Visits)))
+
+ggplot(appt_len, aes(Duration, Visits)) +
+  geom_bar(stat = "identity")
+
+appts_15min <- appts %>%
+  mutate(Date = ymd(Date),
+         Start_Time = hms(Start_Time),
+         End_Time = hms(End_Time))
+
+minute(appts_15min$Start_Time) <- round(minute(appts_15min$Start_Time) / 15) * 15
+minute(appts_15min$End_Time) <- round(minute(appts_15min$End_Time) / 15) * 15
+
+appts_15min <- appts_15min %>%
+  mutate(Start_Hr = hour(Start_Time), 
+         Start_Min = minute(Start_Time),
+         End_Hr = hour(End_Time),
+         End_Min = minute(End_Time)) %>%
+  group_by(Clinic, Date, Start_Hr, Start_Min) %>%
+  summarize(Visits = sum(Total_Scheduled_Visits)) %>%
+  ungroup()
+
+appts_15min$Start_Time <- hm(str_c(appts_15min$Start_Hr, ":", appts_15min$Start_Min), roll = TRUE)
+
+appts_15min <- appts_15min %>%
+  mutate(Start_Hr = hour(Start_Time), 
+         Start_Min = minute(Start_Time)) %>%
+  group_by(Clinic, Date, Start_Hr, Start_Min) %>%
+  summarize(Visits = sum(Visits)) %>%
+  ungroup() %>%
+  filter(!(wday(Date, label = TRUE) %in% c("Sat", "Sun"))) %>%
+  arrange(Clinic, Date, Start_Hr, Start_Min)
+
+avg_day <- appts_15min %>% 
+  group_by(Clinic, Start_Hr, Start_Min) %>%
+  summarize(Total_Visits = sum(Visits),
+            Days = n_distinct(Date),
+            Avg_Visits = round((Total_Visits / Days) / 0.25) * 0.25)
+schedule <- avg_day %>%
+  ungroup() %>%
+  mutate(Start_Time = hm(str_c(Start_Hr, ":", Start_Min))) %>%
+  select(Clinic, Start_Time, Avg_Visits) %>%
+  mutate(Visits_Int = round(Avg_Visits),
+         Avg_Vts_per_Hr = Avg_Visits * 4)
+
+knitr::kable(schedule)
+```
+
+### Patient Arrivals & Arrival Time Deviation
+
+```{r arrival-time}
+enc_times <- enc_times %>%
+  filter(hms(Arrival_Time) >= hms("07:00:00") & Vitals_Done != "NULL") %>%
+  mutate(early_late = as.numeric(as.duration(hms(Arrival_Time) - hms(Start_Time))) / 60,
+         length = as.numeric(as.duration(hms(Departure_Time) - hms(Arrival_Time))) / 60)
+
+ggplot(enc_times, aes(early_late)) +
+  geom_histogram(binwidth = 15)
+
+ggplot(enc_times, aes(early_late)) +
+  geom_histogram(binwidth = 5) +
+  coord_cartesian(xlim = c(-120, 120))
+
+nrm <- fitdistr(enc_times$early_late, "normal")
+enc_filt <- enc_times %>%
+  filter(early_late > -65 & early_late < 65)
+tri <- fitdist(enc_filt$early_late, "triang", 
+               start = list(min = min(enc_filt$early_late) - 5, 
+                            mode = unique(enc_filt$early_late)[which.max(
+                              tabulate(match(enc_filt$early_late, unique(enc_filt$early_late))))], 
+                            max = max(enc_filt$early_late + 5)))
+
+ggplot(enc_times, aes(early_late)) +
+  geom_histogram(binwidth = 15, aes(y = ..density..)) +
+  coord_cartesian(xlim = c(-120, 120)) +
+  geom_line(stat = "density", aes(color = "empirical density", linetype = "empirical density")) +
+  stat_function(fun = dnorm, args = list(nrm$estimate[1], nrm$estimate[2]), 
+                aes(color = "normal", linetype = "normal")) +
+  stat_function(fun = dtriang, args = list(min = tri$estimate[1], 
+                                           mode = tri$estimate[2], 
+                                           max = tri$estimate[3]), 
+                aes(color = "triangle", linetype = "triangle")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical density" = "black",
+                                "normal" = "red",
+                                "triangle" = "blue"),
+                     breaks = c("empirical density", 
+                                "normal",
+                                "triangle")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical density" = "solid",
+                                   "normal" = "dashed",
+                                   "triangle" = "dashed"),
+                        breaks = c("empirical density", 
+                                   "normal",
+                                   "triangle")) +
+  xlab("arrival time deviation (minutes)")
+
+ks.test(enc_times$early_late, "pnorm", nrm$estimate[1], nrm$estimate[2])
+ks.test(enc_times$early_late, "ptriang", tri$estimate[1], tri$estimate[2], tri$estimate[3])
+
+ggplot(enc_times, aes(early_late)) +
+  stat_ecdf(aes(color = "empirical cumulative distribution",
+                linetype = "empirical cumulative distribution")) +
+  stat_function(fun = pnorm, args = list(nrm$estimate[1], nrm$estimate[2]),
+                aes(color = "normal", linetype = "normal")) +
+  stat_function(fun = ptriang, args = list(min = tri$estimate[1],
+                                           mode = tri$estimate[2],
+                                           max = tri$estimate[3]),
+                aes(color = "triangle", linetype = "triangle")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical cumulative distribution" = "black",
+                                "normal" = "red",
+                                "triangle" = "blue"),
+                     breaks = c("empirical cumulative distribution", 
+                                "normal",
+                                "triangle")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical cumulative distribution" = "solid",
+                                   "normal" = "dashed",
+                                   "triangle" = "dashed"),
+                        breaks = c("empirical cumulative distribution", 
+                                   "normal",
+                                   "triangle")) +
+  labs(x = "interarrival time (minutes)", y = "cumulative probability")
+
+ggplot(enc_times) +
+  geom_line(aes(x = ppoints(length(early_late), 1),
+                y = pnorm(sort(early_late), nrm$estimate[1], nrm$estimate[2]),
+                color = "normal")) +
+  geom_line(aes(x = ppoints(length(early_late), 1),
+                y = ptriang(sort(early_late), tri$estimate[1], tri$estimate[2], tri$estimate[3]),
+                color = "triangle")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "",
+                     values = c("normal" = "red",
+                                "triangle" = "blue"),
+                     breaks = c("normal",
+                                "triangle")) +
+  labs(title = "P-P Plot", x = "sample probability", y = "theoretical probability")
+
+ggplot(enc_times, aes(sample = early_late)) +
+  stat_qq(distribution = qnorm,
+          dparams = list(nrm$estimate[1], nrm$estimate[2]),
+          geom = "line",
+          aes(color = "normal")) +
+  stat_qq(distribution = qtriang,
+          dparams = list(tri$estimate[1], tri$estimate[2], tri$estimate[3]),
+          geom = "line",
+          aes(color = "triangle")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "",
+                     values = c("normal" = "red",
+                                "triangle" = "blue"),
+                     breaks = c("normal", "triangle")) +
+  labs(title = "Q-Q Plot")
+
+nrm
+```
+
+```{r enc-length-est}
+enc_times %>%
+  filter(length > 0) %>%
+  ggplot(aes(length)) +
+  geom_histogram(binwidth = 10)
+
+interarrival <- enc_times %>%
+  filter(hms(Arrival_Time) >= hms("07:00:00") & Vitals_Done != "NULL") %>%
+  select(Clinic, Date, Arrival_Time) %>%
+  mutate(Date = ymd(Date),
+         Day = wday(Date, label = TRUE), 
+         Weekday = ifelse(Day %in% c("Sat", "Sun"), 0, 1))
+```
+
+### Interarrival Time
+
+```{r interarrival-adult}
+adult_arr <- interarrival %>%
+  filter(Clinic == "Adult Medicine" & Weekday == 1) %>%
+  arrange(Date, Arrival_Time) %>%
+  mutate(Interarrival = ifelse(ymd(Date) == ymd(lag(Date)),
+                               as.numeric(as.duration(hms(Arrival_Time) - hms(lag(Arrival_Time)))) / 60,
+                               NA))
+
+adult_arr <- adult_arr[!is.na(adult_arr$Interarrival) & 
+                         adult_arr$Interarrival > 0 &
+                         adult_arr$Interarrival < 20, ]
+summary(adult_arr$Interarrival)
+
+ggplot(adult_arr, aes(Interarrival)) +
+  geom_histogram(binwidth = 1)
+
+e_fit <- fitdistr(adult_arr$Interarrival, "exponential")
+g_fit <- fitdistr(adult_arr$Interarrival, "gamma")
+lnrm_fit <- fitdistr(adult_arr$Interarrival, "lognormal")
+w_fit <- fitdistr(adult_arr$Interarrival, "weibull")
+
+ggplot(adult_arr, aes(Interarrival)) +
+  geom_histogram(aes(y = ..density..), binwidth = 1) +
+  geom_line(stat = "density", aes(color = "empirical density", linetype = "empirical density")) +
+  stat_function(fun = dexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = dgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]), 
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = dlnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = dweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]), 
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical density" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical density", 
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical density" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical density", 
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "interarrival time (minutes)")
+
+ks.test(adult_arr$Interarrival, "pexp", e_fit$estimate[1])
+ks.test(adult_arr$Interarrival, "pgamma", g_fit$estimate[1], g_fit$estimate[2])
+ks.test(adult_arr$Interarrival, "plnorm", lnrm_fit$estimate[1], lnrm_fit$estimate[2])
+ks.test(adult_arr$Interarrival, "pweibull", w_fit$estimate[1], w_fit$estimate[2])
+
+ggplot(adult_arr, aes(Interarrival)) +
+  stat_ecdf(aes(color = "empirical cumulative distribution",
+                linetype = "empirical cumulative distribution")) +
+  stat_function(fun = pexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = pgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]),
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = plnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = pweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]),
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "",
+                     values = c("empirical cumulative distribution" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical cumulative distribution",
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "",
+                        values = c("empirical cumulative distribution" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical cumulative distribution",
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "interarrival time (minutes)", y = "cumulative probability")
+
+ggplot(adult_arr) +
+  geom_line(aes(x = ppoints(length(Interarrival), 1),
+                y = pexp(sort(Interarrival), e_fit$estimate[1]),
+                color = "exponential")) +
+  geom_line(aes(x = ppoints(length(Interarrival), 1),
+                y = pgamma(sort(Interarrival), g_fit$estimate[1], g_fit$estimate[2]),
+                color = "gamma")) +
+  geom_line(aes(x = ppoints(length(Interarrival), 1),
+                y = plnorm(sort(Interarrival), lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                color = "log normal")) +
+  geom_line(aes(x = ppoints(length(Interarrival), 1),
+                y = pweibull(sort(Interarrival), w_fit$estimate[1], w_fit$estimate[2]),
+                color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "",
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "P-P Plot", x = "sample probability", y = "theoretical probability")
+
+ggplot(adult_arr, aes(sample = Interarrival)) +
+  stat_qq(distribution = qexp,
+          dparams = list(e_fit$estimate[1]),
+          geom = "line",
+          aes(color = "exponential")) +
+  stat_qq(distribution = qgamma,
+          dparams = list(g_fit$estimate[1], g_fit$estimate[2]),
+          geom = "line",
+          aes(color = "gamma")) +
+  stat_qq(distribution = qlnorm,
+          dparams = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+          geom = "line",
+          aes(color = "log normal")) +
+  stat_qq(distribution = qweibull,
+          dparams = list(w_fit$estimate[1], w_fit$estimate[2]),
+          geom = "line",
+          aes(color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "",
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "Q-Q Plot")
+```
+
+### Waiting Time Between Registration and Initiation of Care
+
+```{r wait-after-reg}
+enc_times <- enc_times %>%
+  mutate(Wait_Time_After_Reg = 
+           as.numeric(as.duration(
+              hms(format(ymd_hms(Vitals_Done), "%H:%M:%S")) - hms(Arrival_Time))) / 60)
+         
+enc_times %>%
+  filter(Wait_Time_After_Reg > 0 & Wait_Time_After_Reg <= 360) %>%
+  ggplot(aes(Wait_Time_After_Reg)) +
+  geom_histogram(binwidth = 10)
+```
+
+### Provider Service Times
+
+```{r service-time}
+serv_times <- read.csv("Patient_Flow_Wait_Times/Enc_Time_Stamps_Jan_2016.csv", stringsAsFactors = FALSE)
+serv_times <- serv_times %>%
+  mutate(Service_Time = as.numeric(as.duration(
+    hms(Departure_Time) - hms(format(ymd_hms(Vitals_Done), "%H:%M:%S")))) / 60)
+
+serv_times %>%
+  filter(Service_Time > 0 & Service_Time < 180) %>%
+  ggplot(aes(Service_Time)) +
+  geom_histogram(binwidth = 5)
+```
+
+```{r adult-service}
+adult_service <- serv_times %>%
+  filter(Clinic == "Adult Medicine" & 
+           Service_Time > 0 & 
+           Service_Time < 180 & 
+           !(wday(Date, label = TRUE) %in% c("Sat", "Sun"))) %>%
+  select(Clinic, Date, Service_Time)
+
+e_fit <- fitdistr(adult_service$Service_Time, "exponential")
+g_fit <- fitdistr(adult_service$Service_Time, "gamma")
+lnrm_fit <- fitdistr(adult_service$Service_Time, "lognormal")
+w_fit <- fitdistr(adult_service$Service_Time, "weibull")
+
+ggplot(adult_service, aes(Service_Time)) +
+  geom_histogram(aes(y = ..density..), binwidth = 5) +
+  geom_line(stat = "density", aes(color = "empirical density", linetype = "empirical density")) +
+  stat_function(fun = dexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = dgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]), 
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = dlnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = dweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]), 
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical density" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical density", 
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical density" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical density", 
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "service time (minutes)")
+
+ks.test(adult_service$Service_Time, "pexp", e_fit$estimate[1])
+ks.test(adult_service$Service_Time, "pgamma", g_fit$estimate[1], g_fit$estimate[2])
+ks.test(adult_service$Service_Time, "plnorm", lnrm_fit$estimate[1], lnrm_fit$estimate[2])
+ks.test(adult_service$Service_Time, "pweibull", w_fit$estimate[1], w_fit$estimate[2])
+
+ggplot(adult_service, aes(Service_Time)) +
+  stat_ecdf(aes(color = "empirical cumulative distribution", 
+                linetype = "empirical cumulative distribution")) +
+  stat_function(fun = pexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = pgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]), 
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = plnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = pweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]), 
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical cumulative distribution" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical cumulative distribution", 
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical cumulative distribution" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical cumulative distribution", 
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "service time (minutes)", y = "cumulative probability")
+
+ggplot(adult_service) +
+  geom_line(aes(x = ppoints(length(Service_Time), 1),
+                y = pexp(sort(Service_Time), e_fit$estimate[1]),
+                color = "exponential")) +
+  geom_line(aes(x = ppoints(length(Service_Time), 1),
+                y = pgamma(sort(Service_Time), g_fit$estimate[1], g_fit$estimate[2]),
+                color = "gamma")) +
+  geom_line(aes(x = ppoints(length(Service_Time), 1),
+                y = plnorm(sort(Service_Time), lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                color = "log normal")) +
+  geom_line(aes(x = ppoints(length(Service_Time), 1),
+                y = pweibull(sort(Service_Time), w_fit$estimate[1], w_fit$estimate[2]),
+                color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "P-P Plot", x = "sample probability", y = "theoretical probability")
+
+ggplot(adult_service, aes(sample = Service_Time)) +
+  stat_qq(distribution = qexp, 
+          dparams = list(e_fit$estimate[1]), 
+          geom = "line",
+          aes(color = "exponential")) +
+  stat_qq(distribution = qgamma, 
+          dparams = list(g_fit$estimate[1], g_fit$estimate[2]), 
+          geom = "line",
+          aes(color = "gamma")) +
+  stat_qq(distribution = qlnorm, 
+          dparams = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+          geom = "line",
+          aes(color = "log normal")) +
+  stat_qq(distribution = qweibull, 
+          dparams = list(w_fit$estimate[1], w_fit$estimate[2]), 
+          geom = "line",
+          aes(color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "Q-Q Plot")
+
+g_fit
+```
+
+### Monte Carlo Simulation to Identify Distributions of Visit Times with Medical Assistants and with Physicians
+
+```{r service-times-for-med-assistants-and-for-doctors}
+set.seed(2017)
+n <- 10000
+total <- rgamma(n, shape = g_fit$estimate[1], rate = g_fit$estimate[2])
+ma_time <- rtriang(n, min = 2, mode = 10, max = 16)
+md_time <- total - ma_time
+md_time <- md_time[md_time > 0]
+
+df <- data.frame(phys_time = md_time)
+
+ggplot(df, aes(phys_time)) +
+  geom_histogram(binwidth = 10) +
+  xlab("physician service time (minutes)")
+
+e_fit <- fitdistr(df$phys_time, "exponential")
+g_fit <- fitdistr(df$phys_time, "gamma")
+lnrm_fit <- fitdistr(df$phys_time, "lognormal")
+w_fit <- fitdistr(df$phys_time, "weibull")
+
+ggplot(df, aes(phys_time)) +
+  geom_histogram(aes(y = ..density..), binwidth = 5) +
+  geom_line(stat = "density", aes(color = "empirical density", linetype = "empirical density")) +
+  stat_function(fun = dexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = dgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]), 
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = dlnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = dweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]), 
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical density" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical density", 
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical density" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical density", 
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "physician service time (minutes)")
+
+ks.test(df$phys_time, "pexp", e_fit$estimate[1])
+ks.test(df$phys_time, "pgamma", g_fit$estimate[1], g_fit$estimate[2])
+ks.test(df$phys_time, "plnorm", lnrm_fit$estimate[1], lnrm_fit$estimate[2])
+ks.test(df$phys_time, "pweibull", w_fit$estimate[1], w_fit$estimate[2])
+
+ggplot(df, aes(phys_time)) +
+  stat_ecdf(aes(color = "empirical cumulative distribution", 
+                linetype = "empirical cumulative distribution")) +
+  stat_function(fun = pexp, args = list(e_fit$estimate),
+                aes(color = "exponential", linetype = "exponential")) +
+  stat_function(fun = pgamma, args = list(g_fit$estimate[1], g_fit$estimate[2]), 
+                aes(color = "gamma", linetype = "gamma")) +
+  stat_function(fun = plnorm, args = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                aes(color = "log normal", linetype = "log normal")) +
+  stat_function(fun = pweibull, args = list(w_fit$estimate[1], w_fit$estimate[2]), 
+                aes(color = "Weibull", linetype = "Weibull")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical cumulative distribution" = "black",
+                                "exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("empirical cumulative distribution", 
+                                "exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical cumulative distribution" = "solid",
+                                   "exponential" = "dashed",
+                                   "gamma" = "dashed",
+                                   "log normal" = "dashed",
+                                   "Weibull" = "dashed"),
+                        breaks = c("empirical cumulative distribution", 
+                                   "exponential",
+                                   "gamma",
+                                   "log normal",
+                                   "Weibull")) +
+  labs(x = "physician service time (minutes)", y = "cumulative probability")
+
+ggplot(df) +
+  geom_line(aes(x = ppoints(length(phys_time), 1),
+                y = pexp(sort(phys_time), e_fit$estimate[1]),
+                color = "exponential")) +
+  geom_line(aes(x = ppoints(length(phys_time), 1),
+                y = pgamma(sort(phys_time), g_fit$estimate[1], g_fit$estimate[2]),
+                color = "gamma")) +
+  geom_line(aes(x = ppoints(length(phys_time), 1),
+                y = plnorm(sort(phys_time), lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+                color = "log normal")) +
+  geom_line(aes(x = ppoints(length(phys_time), 1),
+                y = pweibull(sort(phys_time), w_fit$estimate[1], w_fit$estimate[2]),
+                color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "P-P Plot", x = "sample probability", y = "theoretical probability")
+
+ggplot(df, aes(sample = phys_time)) +
+  stat_qq(distribution = qexp, 
+          dparams = list(e_fit$estimate[1]), 
+          geom = "line",
+          aes(color = "exponential")) +
+  stat_qq(distribution = qgamma, 
+          dparams = list(g_fit$estimate[1], g_fit$estimate[2]), 
+          geom = "line",
+          aes(color = "gamma")) +
+  stat_qq(distribution = qlnorm, 
+          dparams = list(lnrm_fit$estimate[1], lnrm_fit$estimate[2]),
+          geom = "line",
+          aes(color = "log normal")) +
+  stat_qq(distribution = qweibull, 
+          dparams = list(w_fit$estimate[1], w_fit$estimate[2]), 
+          geom = "line",
+          aes(color = "Weibull")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("exponential" = "red",
+                                "gamma" = "blue",
+                                "log normal" = "green",
+                                "Weibull" = "orange"),
+                     breaks = c("exponential",
+                                "gamma",
+                                "log normal",
+                                "Weibull")) +
+  labs(title = "Q-Q Plot")
+
+w_fit
+```
+
+### Number of Staff
+
+```{r staff}
+staff <- providers %>%
+  select(Clinic, Date, Providers) %>%
+  mutate(Date = ymd(Date),
+         Day = wday(Date, label = TRUE), 
+         Weekday = ifelse(Day %in% c("Sat", "Sun"), 0, 1))
+
+ggplot(staff, aes(Day, Providers)) + 
+  geom_bar(stat = "summary", fun.y = "mean")
+
+ggplot(staff, aes(Providers)) + 
+  geom_histogram(binwidth = 1) +
+  facet_grid(~ Day)
+
+staff %>% 
+  filter(Clinic == "Adult Medicine" & Weekday == 1) %>%
+  ggplot(aes(Providers)) +
+  geom_histogram(aes(y = ..density..), binwidth = 1) +
+  geom_line(stat = "density") #, aes(color = "empirical density", linetype = "empirical density")) +
+```
+
+```{r adult-med-wkday}
+adult_wkday <- staff %>% 
+  filter(Clinic == "Adult Medicine" & Weekday == 1)
+adult_wkday <- adult_wkday$Providers
+
+unif <- c(min = min(adult_wkday), max = max(adult_wkday))
+geo <- fitdistr(adult_wkday, "geometric")
+nb <- fitdist(adult_wkday, "nbinom")
+
+ggplot(data.frame(adult_wkday = adult_wkday), aes(adult_wkday)) +
+  geom_histogram(aes(y = ..density..), binwidth = 1) +
+  geom_line(stat = "density", aes(color = "empirical density", linetype = "empirical density")) +
+  geom_line(aes(y = dunif(adult_wkday, min = unif[1], max = unif[2]),
+                color = "uniform", linetype = "uniform")) +
+  geom_line(aes(y = dgeom(adult_wkday, prob = geo$estimate[1]),
+                color = "geometric", linetype = "geometric")) +
+  geom_line(aes(y = dnbinom(adult_wkday, size = nb$estimate[[1]], mu = nb$estimate[[2]]),
+                color = "negative binomial", linetype = "negative binomial")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical density" = "black",
+                                "uniform" = "red",
+                                "geometric" = "blue",
+                                "negative binomial" = "green"),
+                     breaks = c("empirical density", 
+                                "uniform",
+                                "geometric",
+                                "negative binomial")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical density" = "solid",
+                                "uniform" = "dashed",
+                                "geometric" = "dashed",
+                                "negative binomial" = "dashed"),
+                     breaks = c("empirical density", 
+                                "uniform",
+                                "geometric",
+                                "negative binomial"))
+
+tab <- as.data.frame(table(factor(adult_wkday, levels = min(adult_wkday):max(adult_wkday))))
+
+counts <- data.frame(
+  observed = tab$Freq,
+  expected_unif = dunif(min(adult_wkday):max(adult_wkday), 
+                        min = min(adult_wkday), 
+                        max = max(adult_wkday)) * length(adult_wkday),
+  expected_geom = dgeom(min(adult_wkday):max(adult_wkday), 
+                        prob = geo$estimate[1]) * length(adult_wkday),
+  expected_nbinom = dnbinom(min(adult_wkday):max(adult_wkday),
+                            size = nb$estimate[[1]],
+                            mu = nb$estimate[[2]]) * length(adult_wkday))
+row.names(counts) <- tab$Var1
+
+(t1 <- as.table(t(counts[, 1:2])))
+chisq.test(t1)
+chisq.test(t1, simulate.p.value = TRUE)
+(t2 <- as.table(t(counts[, c(1, 3)])))
+chisq.test(t2)
+chisq.test(t2, simulate.p.value = TRUE)
+(t3 <- as.table(t(counts[, c(1, 4)])))
+chisq.test(t3)
+chisq.test(t3, simulate.p.value = TRUE)
+
+ggplot(data.frame(adult_wkday = adult_wkday), aes(adult_wkday)) +
+  stat_ecdf(aes(color = "empirical cumulative distribution", 
+                linetype = "empirical cumulative distribution")) +
+  stat_function(fun = punif, args = list(unif[1], unif[2]),
+                aes(color = "uniform", linetype = "uniform")) +
+  stat_function(fun = pgeom, args = list(prob = geo$estimate[1]), 
+                aes(color = "geometric", linetype = "geometric")) +
+  stat_function(fun = pnbinom, args = list(size = nb$estimate[1], mu = nb$estimate[2]),
+                aes(color = "negative binomial", linetype = "negative binomial")) +
+  scale_color_manual(name = "", 
+                     values = c("empirical cumulative distribution" = "black",
+                                "uniform" = "red",
+                                "geometric" = "blue",
+                                "negative binomial" = "green"),
+                     breaks = c("empirical cumulative distribution", 
+                                "uniform",
+                                "geometric",
+                                "negative binomial")) +
+  scale_linetype_manual(name = "", 
+                        values = c("empirical cumulative distribution" = "solid",
+                                   "uniform" = "dashed",
+                                   "geometric" = "dashed",
+                                   "negative binomial" = "dashed"),
+                        breaks = c("empirical cumulative distribution", 
+                                   "uniform",
+                                   "geometric",
+                                   "negative binomial")) +
+  labs(y = "cumulative probability")
+
+ggplot(data.frame(adult_wkday = adult_wkday)) +
+  geom_line(aes(x = ppoints(length(adult_wkday), 1),
+                y = punif(sort(adult_wkday), min = unif[1], max = unif[2]),
+                color = "uniform")) +
+  geom_line(aes(x = ppoints(length(adult_wkday), 1),
+                y = pgeom(sort(adult_wkday), prob = geo$estimate[1]),
+                color = "geometric")) +
+  geom_line(aes(x = ppoints(length(adult_wkday), 1),
+                y = pnbinom(sort(adult_wkday), 
+                            size = nb$estimate[1], 
+                            mu = nb$estimate[2]),
+                color = "negative binomial")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) +
+  scale_color_manual(name = "", 
+                     values = c("uniform" = "red",
+                                "geometric" = "blue",
+                                "negative binomial" = "green"),
+                     breaks = c("uniform",
+                                "geometric",
+                                "negative binomial")) +
+  labs(title = "P-P Plot", x = "sample probability", y = "theoretical probability")
+
+ggplot(data.frame(adult_wkday = adult_wkday), aes(sample = adult_wkday)) +
+  stat_qq(distribution = qunif, 
+          dparams = list(min = unif[1], max = unif[2]), 
+          geom = "line",
+          aes(color = "uniform")) +
+  stat_qq(distribution = qgeom, 
+          dparams = list(prob = geo$estimate[1]), 
+          geom = "line",
+          aes(color = "geometric")) +
+  stat_qq(distribution = qnbinom, 
+          dparams = list(size = nb$estimate[1], mu = nb$estimate[2]),
+          geom = "line",
+          aes(color = "negative binomial")) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  scale_color_manual(name = "", 
+                     values = c("uniform" = "red",
+                                "geometric" = "blue",
+                                "negative binomial" = "green"),
+                     breaks = c("uniform",
+                                "geometric",
+                                "negative binomial")) +
+  labs(title = "Q-Q Plot")
+
+nb
+
+mean(adult_wkday)
+```
+
+### Import Simulation Results for Model Validation and Comparison
+
+```{r import-sim-results}
+fixed <- read.csv("Adult_Amb_Clinic_Fixed_Exam_Rms_Model_Experiment1_ResultsSummary.csv", header = TRUE, stringsAsFactors = FALSE)
+
+flex <- read.csv("Adult_Amb_Clinic_Flex_Exam_Rms_Model_Experiment1_ResultsSummary.csv", header = TRUE, stringsAsFactors = FALSE)
+```
+
+### Model Verification and Validation
+
+```{r model-vv}
+model_vv <- data.frame(Source = c("Observed Data", 
+                                  "Status Quo Model (Fixed Exam Rooms)", 
+                                  "Intervention Model (Flexible Exam Rooms)"),
+                       Total_Visits = numeric(3),
+                       Time_In_System = numeric(3),
+                       Average_Wait_Time = numeric(3))
+
+model_vv[model_vv$Source == "Observed Data", ]$Total_Visits <- visits %>%
+  filter(!(wday(mdy(Date), label = TRUE) %in% c("Sat", "Sun"))) %>%
+  summarize(visits_per_day = mean(Visits)) * (52 * 5)
+
+model_vv[model_vv$Source == "Observed Data", ]$Time_In_System <- enc_times %>%
+  filter(length > 0) %>% 
+  summarize(avg_length = mean(length, na.rm = TRUE))
+
+model_vv[model_vv$Source == "Observed Data", ]$Average_Wait_Time <- enc_times %>%
+  filter(Wait_Time_After_Reg > 0 & Wait_Time_After_Reg <= 240) %>%
+  summarize(avg_wait = mean(Wait_Time_After_Reg, na.rm = TRUE))
+
+model_vv[model_vv$Source == "Status Quo Model (Fixed Exam Rooms)", ]$Total_Visits <- fixed %>% 
+  filter(Object.Name == "Patient" & Data.Item == "NumberDestroyed" & Statistic.Type == "Total") %>%
+  select(Average)
+
+model_vv[model_vv$Source == "Status Quo Model (Fixed Exam Rooms)", ]$Time_In_System <- fixed %>% 
+  filter(Object.Name == "Patient" & Data.Item == "TimeInSystem" & Statistic.Type == "Average (Minutes)") %>%
+  select(Average)
+
+model_vv[model_vv$Source == "Status Quo Model (Fixed Exam Rooms)", ]$Average_Wait_Time <- fixed %>% 
+  filter(Object.Name == "Model" & Data.Source == "WaitTime" & Statistic.Type == "Average (Minutes)") %>%
+  select(Average)
+
+model_vv[model_vv$Source == "Intervention Model (Flexible Exam Rooms)", ]$Total_Visits <- flex %>% 
+  filter(Object.Name == "Patient" & Data.Item == "NumberDestroyed" & Statistic.Type == "Total") %>%
+  select(Average)
+
+model_vv[model_vv$Source == "Intervention Model (Flexible Exam Rooms)", ]$Time_In_System <- flex %>% 
+  filter(Object.Name == "Patient" & Data.Item == "TimeInSystem" & Statistic.Type == "Average (Minutes)") %>%
+  select(Average)
+
+model_vv[model_vv$Source == "Intervention Model (Flexible Exam Rooms)", ]$Average_Wait_Time <- flex %>% 
+  filter(Object.Name == "Model" & Data.Source == "WaitTime" & Statistic.Type == "Average (Minutes)") %>%
+  select(Average)
+
+knitr::kable(model_vv, digits = 2)
+```
+
+### Status Quo versus Intervention Models: 
+### Effects of Flexible Exam Room Allocation on Average Wait Time Between Registration and Escort to Exam Room and Average Total Time in System
+
+$t = \frac{\bar{x_1} - \bar{x_2}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$
+
+$d.f. = \frac{(s_1^2 / n_1 + s_2^2/ n_2)^2}{(s_1^2 / n_1)^2 / (n_1 - 1) + (s_2^2 / n_2)^2 / (n_2 - 1)}$
+
+```{r model-comparison}
+(fixed_wait <- fixed %>% 
+  filter(Object.Name == "Model" & Data.Source == "WaitTime" & Statistic.Type == "Average (Minutes)") %>%
+  select(Average, Standard.Deviation, Half.Width))
+
+(fixed_tis <- fixed %>% 
+  filter(Object.Name == "Patient" & Data.Item == "TimeInSystem" & Statistic.Type == "Average (Minutes)") %>%
+  select(Average, Standard.Deviation, Half.Width))
+
+(flex_wait <- flex %>% 
+  filter(Object.Name == "Model" & Data.Source == "WaitTime" & Statistic.Type == "Average (Minutes)") %>%
+  select(Average, Standard.Deviation, Half.Width))
+
+(flex_tis <- flex %>% 
+  filter(Object.Name == "Patient" & Data.Item == "TimeInSystem" & Statistic.Type == "Average (Minutes)") %>%
+  select(Average, Standard.Deviation, Half.Width))
+
+df_wait <- (fixed_wait$Standard.Deviation^2 / 10 + flex_wait$Standard.Deviation^2 / 10)^2 /
+  (((fixed_wait$Standard.Deviation^2 / 10)^2 / 9) + ((flex_wait$Standard.Deviation^2 / 10)^2 / 9))
+
+(t_wait <- (flex_wait$Average - fixed_wait$Average) / 
+  (sqrt(flex_wait$Standard.Deviation^2 / 10 + fixed_wait$Standard.Deviation^2 / 10)))
+(p_value_wait <- pt(t_wait, df_wait))
+
+df_tis <- (fixed_tis$Standard.Deviation^2 / 10 + flex_tis$Standard.Deviation^2 / 10)^2 /
+  (((fixed_tis$Standard.Deviation^2 / 10)^2 / 9) + ((flex_tis$Standard.Deviation^2 / 10)^2 / 9))
+
+(t_tis <- (flex_tis$Average - fixed_tis$Average) / 
+  (sqrt(flex_tis$Standard.Deviation^2 / 10 + fixed_tis$Standard.Deviation^2 / 10)))
+(p_value_tis <- pt(t_tis, df_tis))
+
+diff_means <- data.frame(Parameter = c("Average Wait Time (minutes)", "Average Time In System (minutes)"),
+                         t_statistic = c(t_wait, t_tis),
+                         p_value_1_sided = formatC(c(p_value_wait, p_value_tis), format = "e"))
+
+knitr::kable(diff_means)
+```

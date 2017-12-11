@@ -1,0 +1,996 @@
+Scenario,Object Type,Object Name,Data Source,Category,Data Item,Statistic Type,Average,Minimum,Maximum,Half Width,Standard Deviation
+Scenario1,Model,Model,WaitAreaSize,UserSpecified,TallyValue,Average,6.18878659321399,5.64846327281358,6.83040639290934,0.241515460225285,0.337638790652388
+Scenario1,Model,Model,WaitAreaSize,UserSpecified,TallyValue,Maximum,37.5,30,44,2.7857213428482,3.89444048184931
+Scenario1,Model,Model,WaitAreaSize,UserSpecified,TallyValue,Minimum,0,0,0,0,0
+Scenario1,Model,Model,WaitAreaSize,UserSpecified,TallyValue,Observations,84518,84236,84844,155.209759930231,216.983358296847
+Scenario1,Model,Model,WaitTime,UserSpecified,TallyValue,Average (Minutes),32.3625247214361,30.1509981610414,35.0497919555637,0.997314035971489,1.39424575425509
+Scenario1,Model,Model,WaitTime,UserSpecified,TallyValue,Maximum (Minutes),157.428113054485,138.643562900197,176.171630400968,9.74381616969268,13.62186215659
+Scenario1,Model,Model,WaitTime,UserSpecified,TallyValue,Minimum (Minutes),2.43257910402735,2.40791229121896,2.46619760300746,0.0123010652157042,0.0171968981997771
+Scenario1,Model,Model,WaitTime,UserSpecified,TallyValue,Observations,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,ModelEntity,Patient,[Population],Content,NumberInSystem,Average,7.16022734006952,6.92727166577961,7.43775369099104,0.104246678760174,0.145736933417351
+Scenario1,ModelEntity,Patient,[Population],Content,NumberInSystem,Maximum,54.6,49,59,2.24180316709563,3.13404247294484
+Scenario1,ModelEntity,Patient,[Population],Content,NumberInSystem,Minimum,0,0,0,0,0
+Scenario1,ModelEntity,Patient,[Population],FlowTime,TimeInSystem,Average (Minutes),89.0531436632427,86.4121036557192,92.1522639193089,1.1688389741836,1.63403774376433
+Scenario1,ModelEntity,Patient,[Population],FlowTime,TimeInSystem,Maximum (Minutes),409.390160733448,360.574220205144,458.867279653595,25.5330779575572,35.6952617243682
+Scenario1,ModelEntity,Patient,[Population],FlowTime,TimeInSystem,Minimum (Minutes),11.8164900821985,10.1163053684468,13.2544919187421,0.768175394546018,1.07390976536866
+Scenario1,ModelEntity,Patient,[Population],FlowTime,TimeInSystem,Observations,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,ModelEntity,Patient,[Population],Throughput,NumberCreated,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,ModelEntity,Patient,[Population],Throughput,NumberDestroyed,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Path,Path1,[Travelers],Content,NumberOnLink,Average,0.00598225044381933,0.0059622902622559,0.00600532497995506,1.09858687526548E-05,1.5358252579161E-05
+Scenario1,Path,Path1,[Travelers],Content,NumberOnLink,Maximum,3.2,3,4,0.3016,0.421637021355784
+Scenario1,Path,Path1,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path1,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0744047619032973,0.0744047619032423,0.0744047619033609,2.87670955703572E-14,4.02164207206319E-14
+Scenario1,Path,Path1,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0744047619446064,0.0744047619446064,0.0744047619446064,0,0
+Scenario1,Path,Path1,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0744047618900368,0.0744047618900368,0.0744047618900368,0,0
+Scenario1,Path,Path1,[Travelers],Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Path,Path1,[Travelers],Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Path,Path10,[Travelers],Content,NumberOnLink,Average,0.00221296069844101,0.00218864381795361,0.00223162191102705,1.05534330032229E-05,1.4753707084074E-05
+Scenario1,Path,Path10,[Travelers],Content,NumberOnLink,Maximum,2.3,2,3,0.34552620739967,0.483045891539648
+Scenario1,Path,Path10,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path10,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0654761904898953,0.0654761904896751,0.0654761904900738,7.40060290670875E-14,1.03460482951646E-13
+Scenario1,Path,Path10,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0654761905025225,0.0654761905025225,0.0654761905025225,0,0
+Scenario1,Path,Path10,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0654761904752377,0.0654761904752377,0.0654761904752377,0,0
+Scenario1,Path,Path10,[Travelers],Throughput,NumberEntered,Total,17764.2,17569,17914,84.7160524349429,118.433103480404
+Scenario1,Path,Path10,[Travelers],Throughput,NumberExited,Total,17764.2,17569,17914,84.7160524349429,118.433103480404
+Scenario1,Path,Path11,[Travelers],Content,NumberOnLink,Average,0.00144119872103825,0.00142213887106608,0.00145664591970726,8.15073701811563E-06,1.13947363334635E-05
+Scenario1,Path,Path11,[Travelers],Content,NumberOnLink,Maximum,2.2,2,3,0.3016,0.421637021355784
+Scenario1,Path,Path11,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path11,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0654761904899045,0.0654761904896862,0.0654761904901821,9.43637006570934E-14,1.31920522775748E-13
+Scenario1,Path,Path11,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0654761905025225,0.0654761905025225,0.0654761905025225,0,0
+Scenario1,Path,Path11,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0654761904752377,0.0654761904752377,0.0654761904752377,0,0
+Scenario1,Path,Path11,[Travelers],Throughput,NumberEntered,Total,11569,11416,11693,65.4287817401486,91.469484893415
+Scenario1,Path,Path11,[Travelers],Throughput,NumberExited,Total,11569,11416,11693,65.4287817401486,91.469484893415
+Scenario1,Path,Path12,[Travelers],Content,NumberOnLink,Average,0.0010681737880038,0.00104629856150051,0.00108055646177564,7.70024793716873E-06,1.07649522676686E-05
+Scenario1,Path,Path12,[Travelers],Content,NumberOnLink,Maximum,2.1,2,3,0.2262,0.316227766016838
+Scenario1,Path,Path12,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path12,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0654761904899118,0.0654761904896396,0.0654761904902223,1.10440307298413E-13,1.5439563065955E-13
+Scenario1,Path,Path12,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0654761905025225,0.0654761905025225,0.0654761905025225,0,0
+Scenario1,Path,Path12,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0654761904752377,0.0654761904752377,0.0654761904752377,0,0
+Scenario1,Path,Path12,[Travelers],Throughput,NumberEntered,Total,8574.6,8399,8674,61.8125502648127,86.4139906368048
+Scenario1,Path,Path12,[Travelers],Throughput,NumberExited,Total,8574.6,8399,8674,61.8125502648127,86.4139906368048
+Scenario1,Path,Path13,[Travelers],Content,NumberOnLink,Average,0.000704628950281565,0.000687774063346474,0.000711318583898814,4.91725818446941E-06,6.87433055085223E-06
+Scenario1,Path,Path13,[Travelers],Content,NumberOnLink,Maximum,2,2,2,0,0
+Scenario1,Path,Path13,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path13,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0654761904898947,0.0654761904895878,0.0654761904901849,1.05394337003685E-13,1.4734136048409E-13
+Scenario1,Path,Path13,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0654761905025225,0.0654761905025225,0.0654761905025225,0,0
+Scenario1,Path,Path13,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0654761904752377,0.0654761904752377,0.0654761904752377,0,0
+Scenario1,Path,Path13,[Travelers],Throughput,NumberEntered,Total,5656.3,5521,5710,39.4725301286857,55.1826260903033
+Scenario1,Path,Path13,[Travelers],Throughput,NumberExited,Total,5656.3,5521,5710,39.4725301286857,55.1826260903033
+Scenario1,Path,Path2,[Travelers],Content,NumberOnLink,Average,0.0124430809235233,0.0124015637458743,0.0124910759586771,2.28506070058708E-05,3.19451653651425E-05
+Scenario1,Path,Path2,[Travelers],Content,NumberOnLink,Maximum,3,3,3,0,0
+Scenario1,Path,Path2,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path2,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.154761904763573,0.154761904763553,0.154761904763596,1.2058173557293E-14,1.68573354830507E-14
+Scenario1,Path,Path2,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.154761904814222,0.154761904814222,0.154761904814222,0,0
+Scenario1,Path,Path2,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.154761904759653,0.154761904759653,0.154761904759653,0,0
+Scenario1,Path,Path2,[Travelers],Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Path,Path2,[Travelers],Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Path,Path23,[Travelers],Content,NumberOnLink,Average,0.000429044810486796,0.000420267993061632,0.000435443393514238,2.9860240523188E-06,4.17446381669903E-06
+Scenario1,Path,Path23,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path23,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path23,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095266878,0.0595238095264171,0.0595238095269398,1.25227275587653E-13,1.7506782318063E-13
+Scenario1,Path,Path23,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path23,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path23,[Travelers],Throughput,NumberEntered,Total,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Path,Path23,[Travelers],Throughput,NumberExited,Total,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Path,Path24,[Travelers],Content,NumberOnLink,Average,0.000418150231954887,0.000411208052495787,0.000425024461858699,3.10379217326915E-06,4.33910373622214E-06
+Scenario1,Path,Path24,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path24,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path24,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095267151,0.0595238095264941,0.0595238095269105,1.18373582334905E-13,1.65486354983101E-13
+Scenario1,Path,Path24,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path24,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path24,[Travelers],Throughput,NumberEntered,Total,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Path,Path24,[Travelers],Throughput,NumberExited,Total,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Path,Path25,[Travelers],Content,NumberOnLink,Average,0.000405919312189514,0.000394786910216948,0.000415738022778508,4.01497104646011E-06,5.61293246969216E-06
+Scenario1,Path,Path25,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path25,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path25,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095267723,0.059523809526611,0.0595238095269596,8.54031695657557E-14,1.19393693733582E-13
+Scenario1,Path,Path25,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path25,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path25,[Travelers],Throughput,NumberEntered,Total,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Path,Path25,[Travelers],Throughput,NumberExited,Total,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Path,Path26,[Travelers],Content,NumberOnLink,Average,0.000395919402788515,0.000386066717419575,0.000402940856728064,3.49306437875519E-06,4.8833065651934E-06
+Scenario1,Path,Path26,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path26,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path26,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095267856,0.0595238095264677,0.0595238095270542,1.37934812422269E-13,1.92832969001971E-13
+Scenario1,Path,Path26,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path26,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path26,[Travelers],Throughput,NumberEntered,Total,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Path,Path26,[Travelers],Throughput,NumberExited,Total,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Path,Path27,[Travelers],Content,NumberOnLink,Average,0.000386100692198367,0.000377686272395737,0.000392635174332874,3.46056887959304E-06,4.83787783351503E-06
+Scenario1,Path,Path27,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path27,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path27,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095267247,0.0595238095265311,0.0595238095270079,1.02839817192435E-13,1.43770139913103E-13
+Scenario1,Path,Path27,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path27,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path27,[Travelers],Throughput,NumberEntered,Total,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Path,Path27,[Travelers],Throughput,NumberExited,Total,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Path,Path28,[Travelers],Content,NumberOnLink,Average,0.000373326175998637,0.000366814343714997,0.00038074400233841,2.64660605164211E-06,3.69995720264115E-06
+Scenario1,Path,Path28,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path28,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path28,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095267348,0.0595238095265774,0.0595238095270343,1.0283310687315E-13,1.43760758881817E-13
+Scenario1,Path,Path28,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path28,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path28,[Travelers],Throughput,NumberEntered,Total,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Path,Path28,[Travelers],Throughput,NumberExited,Total,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Path,Path29,[Travelers],Content,NumberOnLink,Average,0.000365557276962841,0.000357414655378228,0.000373949046912306,2.99704091912931E-06,4.18986540458582E-06
+Scenario1,Path,Path29,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path29,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path29,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095268351,0.0595238095266629,0.0595238095271084,1.06805134084349E-13,1.49313655838297E-13
+Scenario1,Path,Path29,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path29,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path29,[Travelers],Throughput,NumberEntered,Total,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Path,Path29,[Travelers],Throughput,NumberExited,Total,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Path,Path3,[Travelers],Content,NumberOnLink,Average,0.0129216609599053,0.0128785469677318,0.0129715019579482,2.37294765075236E-05,3.31738255734891E-05
+Scenario1,Path,Path3,[Travelers],Content,NumberOnLink,Maximum,3.1,3,4,0.2262,0.316227766016838
+Scenario1,Path,Path3,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path3,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.160714285726738,0.160714285726688,0.160714285726786,2.10038233555233E-14,2.93633604665314E-14
+Scenario1,Path,Path3,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.160714285739232,0.160714285739232,0.160714285739232,0,0
+Scenario1,Path,Path3,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.160714285711947,0.160714285711947,0.160714285711947,0,0
+Scenario1,Path,Path3,[Travelers],Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Path,Path3,[Travelers],Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Path,Path30,[Travelers],Content,NumberOnLink,Average,0.000355455443229813,0.000351752192522512,0.000362057874919875,2.09233233221826E-06,2.92508213608392E-06
+Scenario1,Path,Path30,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path30,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path30,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.059523809526743,0.0595238095265542,0.059523809527021,1.06512910715041E-13,1.48905127353529E-13
+Scenario1,Path,Path30,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path30,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path30,[Travelers],Throughput,NumberEntered,Total,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Path,Path30,[Travelers],Throughput,NumberExited,Total,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Path,Path31,[Travelers],Content,NumberOnLink,Average,0.000346146354296504,0.00033793578315711,0.000352205189551244,3.10242933587159E-06,4.33719848854012E-06
+Scenario1,Path,Path31,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path31,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path31,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095266619,0.0595238095264226,0.0595238095268622,7.92659380427342E-14,1.10813839560048E-13
+Scenario1,Path,Path31,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path31,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path31,[Travelers],Throughput,NumberEntered,Total,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Path,Path31,[Travelers],Throughput,NumberExited,Total,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Path,Path32,[Travelers],Content,NumberOnLink,Average,0.000339113575431855,0.000334991302474073,0.000347788468525704,2.72611980083942E-06,3.81111748237717E-06
+Scenario1,Path,Path32,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path32,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path32,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095267772,0.0595238095265232,0.0595238095271036,1.39606834039098E-13,1.95170456449458E-13
+Scenario1,Path,Path32,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path32,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path32,[Travelers],Throughput,NumberEntered,Total,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Path,Path32,[Travelers],Throughput,NumberExited,Total,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Path,Path33,[Travelers],Content,NumberOnLink,Average,0.000330495306967274,0.0003212881423659,0.000335897296529003,3.37588454887917E-06,4.71948907702397E-06
+Scenario1,Path,Path33,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path33,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path33,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095267802,0.0595238095264017,0.0595238095269465,1.27966683564425E-13,1.78897517542713E-13
+Scenario1,Path,Path33,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path33,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path33,[Travelers],Throughput,NumberEntered,Total,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Path,Path33,[Travelers],Throughput,NumberExited,Total,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Path,Path34,[Travelers],Content,NumberOnLink,Average,0.000323711676466802,0.000316871421337537,0.00032864934407582,2.6592352175839E-06,3.7176127858968E-06
+Scenario1,Path,Path34,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path34,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path34,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095266406,0.0595238095264508,0.0595238095268506,1.02983483064841E-13,1.43970984908168E-13
+Scenario1,Path,Path34,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path34,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path34,[Travelers],Throughput,NumberEntered,Total,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Path,Path34,[Travelers],Throughput,NumberExited,Total,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Path,Path35,[Travelers],Content,NumberOnLink,Average,0.000316860096413293,0.000308377727056793,0.000321741139394197,2.83372404637857E-06,3.96154829661578E-06
+Scenario1,Path,Path35,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path35,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path35,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095267254,0.0595238095265628,0.0595238095269213,8.79954100419233E-14,1.23017647821808E-13
+Scenario1,Path,Path35,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path35,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238095229433,0.0595238095229433,0.0595238095229433,0,0
+Scenario1,Path,Path35,[Travelers],Throughput,NumberEntered,Total,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Path,Path35,[Travelers],Throughput,NumberExited,Total,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Path,Path4,[Travelers],Content,NumberOnLink,Average,0.00479243110015498,0.00477056833107334,0.00481329727577614,1.09959654642934E-05,1.53723677894421E-05
+Scenario1,Path,Path4,[Travelers],Content,NumberOnLink,Maximum,2.9,2,3,0.2262,0.316227766016838
+Scenario1,Path,Path4,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path4,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0654761904898937,0.0654761904898599,0.0654761904899401,2.03771407578148E-14,2.84872577349886E-14
+Scenario1,Path,Path4,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0654761905025225,0.0654761905025225,0.0654761905025225,0,0
+Scenario1,Path,Path4,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0654761904752377,0.0654761904752377,0.0654761904752377,0,0
+Scenario1,Path,Path4,[Travelers],Throughput,NumberEntered,Total,38470.5,38295,38638,88.2684133730747,123.399306679126
+Scenario1,Path,Path4,[Travelers],Throughput,NumberExited,Total,38470.5,38295,38638,88.2684133730747,123.399306679126
+Scenario1,Path,Path45,[Travelers],Content,NumberOnLink,Average,0.00598225044381949,0.00596229026225594,0.00600532497995531,1.09858687526797E-05,1.53582525791958E-05
+Scenario1,Path,Path45,[Travelers],Content,NumberOnLink,Maximum,2,2,2,0,0
+Scenario1,Path,Path45,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path45,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0744047619032992,0.0744047619032442,0.0744047619033641,2.9427764801959E-14,4.11400367913016E-14
+Scenario1,Path,Path45,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0744047619446064,0.0744047619446064,0.0744047619446064,0,0
+Scenario1,Path,Path45,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0744047618900368,0.0744047618900368,0.0744047618900368,0,0
+Scenario1,Path,Path45,[Travelers],Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Path,Path45,[Travelers],Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Path,Path46,[Travelers],Content,NumberOnLink,Average,0.00141584787459809,0.00138688437709925,0.00143696319858055,9.85387937022577E-06,1.37757305917149E-05
+Scenario1,Path,Path46,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path46,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path46,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.196428571436917,0.196428571436655,0.196428571437177,1.39519552859032E-13,1.95048437295666E-13
+Scenario1,Path,Path46,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.196428571452998,0.196428571452998,0.196428571452998,0,0
+Scenario1,Path,Path46,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.196428571398428,0.196428571398428,0.196428571398428,0,0
+Scenario1,Path,Path46,[Travelers],Throughput,NumberEntered,Total,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Path,Path46,[Travelers],Throughput,NumberExited,Total,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Path,Path47,[Travelers],Content,NumberOnLink,Average,0.00179804599739949,0.00176819462572159,0.00182760518599217,1.33463063462007E-05,1.86581460673537E-05
+Scenario1,Path,Path47,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path47,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path47,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.255952380963944,0.25595238096372,0.255952380964204,1.03290214821369E-13,1.44399796128915E-13
+Scenario1,Path,Path47,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.255952380975941,0.255952380975941,0.255952380975941,0,0
+Scenario1,Path,Path47,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.255952380948656,0.255952380948656,0.255952380948656,0,0
+Scenario1,Path,Path47,[Travelers],Throughput,NumberEntered,Total,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Path,Path47,[Travelers],Throughput,NumberExited,Total,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Path,Path48,[Travelers],Content,NumberOnLink,Average,0.00211078042325408,0.00205289193300294,0.00216183771831782,2.08778494413742E-05,2.9187248842094E-05
+Scenario1,Path,Path48,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path48,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path48,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.309523809519946,0.309523809519893,0.309523809519979,1.65305587523245E-14,2.31097332681594E-14
+Scenario1,Path,Path48,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.309523809526127,0.309523809526127,0.309523809526127,0,0
+Scenario1,Path,Path48,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.309523809519305,0.309523809519305,0.309523809519305,0,0
+Scenario1,Path,Path48,[Travelers],Throughput,NumberEntered,Total,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Path,Path48,[Travelers],Throughput,NumberExited,Total,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Path,Path49,[Travelers],Content,NumberOnLink,Average,0.00249429223750916,0.0024322203196983,0.00253852739732806,2.20063055846654E-05,3.07648313586322E-05
+Scenario1,Path,Path49,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path49,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path49,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.375000000009959,0.375000000009695,0.375000000010265,1.14719452570611E-13,1.60377878890712E-13
+Scenario1,Path,Path49,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.375000000021828,0.375000000021828,0.375000000021828,0,0
+Scenario1,Path,Path49,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.374999999994543,0.374999999994543,0.374999999994543,0,0
+Scenario1,Path,Path49,[Travelers],Throughput,NumberEntered,Total,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Path,Path49,[Travelers],Throughput,NumberExited,Total,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Path,Path5,[Travelers],Content,NumberOnLink,Average,0.00393860531412795,0.00391865079503134,0.00395976027535215,9.8296988205477E-06,1.37419261655179E-05
+Scenario1,Path,Path5,[Travelers],Content,NumberOnLink,Maximum,2.8,2,3,0.3016,0.421637021355784
+Scenario1,Path,Path5,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path5,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0595238095446473,0.0595238095445472,0.0595238095447798,5.61648510031347E-14,7.85185029239162E-14
+Scenario1,Path,Path5,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.059523809577513,0.059523809577513,0.059523809577513,0,0
+Scenario1,Path,Path5,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0595238094683737,0.0595238094683737,0.0595238094683737,0,0
+Scenario1,Path,Path5,[Travelers],Throughput,NumberEntered,Total,34778.2,34602,34965,86.7970269361802,121.34230736044
+Scenario1,Path,Path5,[Travelers],Throughput,NumberExited,Total,34778.2,34602,34965,86.7970269361802,121.34230736044
+Scenario1,Path,Path50,[Travelers],Content,NumberOnLink,Average,0.00281853505294427,0.00275710978839285,0.00286623677251995,2.52621528209238E-05,3.53165081845124E-05
+Scenario1,Path,Path50,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path50,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path50,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.434523809529084,0.434523809528833,0.434523809529431,1.34344669645567E-13,1.87813946765197E-13
+Scenario1,Path,Path50,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.434523809544771,0.434523809544771,0.434523809544771,0,0
+Scenario1,Path,Path50,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.434523809490202,0.434523809490202,0.434523809490202,0,0
+Scenario1,Path,Path50,[Travelers],Throughput,NumberEntered,Total,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Path,Path50,[Travelers],Throughput,NumberExited,Total,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Path,Path51,[Travelers],Content,NumberOnLink,Average,0.00309860726069749,0.00304455905275226,0.0031601752193129,2.19668302255303E-05,3.07096447775888E-05
+Scenario1,Path,Path51,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path51,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path51,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.494047619057364,0.494047619057132,0.494047619057571,1.08429803993307E-13,1.51584945563427E-13
+Scenario1,Path,Path51,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.494047619067715,0.494047619067715,0.494047619067715,0,0
+Scenario1,Path,Path51,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.49404761904043,0.49404761904043,0.49404761904043,0,0
+Scenario1,Path,Path51,[Travelers],Throughput,NumberEntered,Total,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Path,Path51,[Travelers],Throughput,NumberExited,Total,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Path,Path52,[Travelers],Content,NumberOnLink,Average,0.00339968267561318,0.00332395629487742,0.00347772613614998,2.78724805488465E-05,3.89657482639677E-05
+Scenario1,Path,Path52,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path52,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path52,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.553571428576563,0.553571428576314,0.553571428576792,1.14715025997138E-13,1.60371690537747E-13
+Scenario1,Path,Path52,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.553571428590658,0.553571428590658,0.553571428590658,0,0
+Scenario1,Path,Path52,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.553571428536088,0.553571428536088,0.553571428536088,0,0
+Scenario1,Path,Path52,[Travelers],Throughput,NumberEntered,Total,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Path,Path52,[Travelers],Throughput,NumberExited,Total,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Path,Path53,[Travelers],Content,NumberOnLink,Average,0.00366119106513566,0.00362304758285519,0.00372919611152423,2.15510230185285E-05,3.01283459970235E-05
+Scenario1,Path,Path53,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path53,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path53,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.613095238103452,0.613095238103242,0.613095238103629,1.02575638029812E-13,1.43400817249864E-13
+Scenario1,Path,Path53,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.613095238113601,0.613095238113601,0.613095238113601,0,0
+Scenario1,Path,Path53,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.613095238086316,0.613095238086316,0.613095238086316,0,0
+Scenario1,Path,Path53,[Travelers],Throughput,NumberEntered,Total,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Path,Path53,[Travelers],Throughput,NumberExited,Total,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Path,Path54,[Travelers],Content,NumberOnLink,Average,0.00356530744913107,0.00348073856640234,0.00362771345224792,3.19550221575505E-05,4.46731444292694E-05
+Scenario1,Path,Path54,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path54,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path54,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.613095238103481,0.613095238103319,0.613095238103618,6.43777264386819E-14,9.00001088105549E-14
+Scenario1,Path,Path54,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.613095238113601,0.613095238113601,0.613095238113601,0,0
+Scenario1,Path,Path54,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.613095238086316,0.613095238086316,0.613095238086316,0,0
+Scenario1,Path,Path54,[Travelers],Throughput,NumberEntered,Total,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Path,Path54,[Travelers],Throughput,NumberExited,Total,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Path,Path55,[Travelers],Content,NumberOnLink,Average,0.00383198340220939,0.0037854017177861,0.00393000969415715,3.08051537462002E-05,4.30656275462694E-05
+Scenario1,Path,Path55,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path55,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path55,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.672619047622648,0.672619047622128,0.67261904762286,1.59239427058098E-13,2.22616835899131E-13
+Scenario1,Path,Path55,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.672619047636545,0.672619047636545,0.672619047636545,0,0
+Scenario1,Path,Path55,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.672619047581975,0.672619047581975,0.672619047581975,0,0
+Scenario1,Path,Path55,[Travelers],Throughput,NumberEntered,Total,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Path,Path55,[Travelers],Throughput,NumberExited,Total,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Path,Path6,[Travelers],Content,NumberOnLink,Average,0.00423922320214686,0.00420879539175131,0.00426573711821851,1.31482323614744E-05,1.83812384913322E-05
+Scenario1,Path,Path6,[Travelers],Content,NumberOnLink,Maximum,2.8,2,3,0.3016,0.421637021355784
+Scenario1,Path,Path6,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path6,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0714285714530211,0.07142857145289,0.071428571453164,6.44789032544086E-14,9.01415540731983E-14
+Scenario1,Path,Path6,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0714285714821017,0.0714285714821017,0.0714285714821017,0,0
+Scenario1,Path,Path6,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.071428571427532,0.071428571427532,0.071428571427532,0,0
+Scenario1,Path,Path6,[Travelers],Throughput,NumberEntered,Total,31193.9,30970,31389,96.749952988309,135.25650528615
+Scenario1,Path,Path6,[Travelers],Throughput,NumberExited,Total,31193.9,30970,31389,96.749952988309,135.25650528615
+Scenario1,Path,Path65,[Travelers],Content,NumberOnLink,Average,0.00345377505075681,0.00336131722478009,0.0035069784192425,3.08875921013999E-05,4.31808764273432E-05
+Scenario1,Path,Path65,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path65,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path65,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.648809523813496,0.648809523813186,0.648809523813748,1.19256385499876E-13,1.66720514455652E-13
+Scenario1,Path,Path65,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.648809523827367,0.648809523827367,0.648809523827367,0,0
+Scenario1,Path,Path65,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.648809523772798,0.648809523772798,0.648809523772798,0,0
+Scenario1,Path,Path65,[Travelers],Throughput,NumberEntered,Total,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Path,Path65,[Travelers],Throughput,NumberExited,Total,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Path,Path66,[Travelers],Content,NumberOnLink,Average,0.00339897260276367,0.00332714992392185,0.00345081811265715,2.7921969780993E-05,3.90349342468306E-05
+Scenario1,Path,Path66,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path66,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path66,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.625000000004404,0.625000000004052,0.625000000004762,1.49507121914934E-13,2.09011066166077E-13
+Scenario1,Path,Path66,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.62500000001819,0.62500000001819,0.62500000001819,0,0
+Scenario1,Path,Path66,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.62499999996362,0.62499999996362,0.62499999996362,0,0
+Scenario1,Path,Path66,[Travelers],Throughput,NumberEntered,Total,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Path,Path66,[Travelers],Throughput,NumberExited,Total,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Path,Path67,[Travelers],Content,NumberOnLink,Average,0.00380069602997452,0.00369481363706074,0.00386281890994806,3.88226723150722E-05,5.42741243899161E-05
+Scenario1,Path,Path67,[Travelers],Content,NumberOnLink,Maximum,1,1,1,0,0
+Scenario1,Path,Path67,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path67,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.6845238095311,0.684523809530887,0.684523809531386,1.21173502891225E-13,1.69400645975804E-13
+Scenario1,Path,Path67,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.684523809541133,0.684523809541133,0.684523809541133,0,0
+Scenario1,Path,Path67,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.684523809513848,0.684523809513848,0.684523809513848,0,0
+Scenario1,Path,Path67,[Travelers],Throughput,NumberEntered,Total,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Path,Path67,[Travelers],Throughput,NumberExited,Total,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Path,Path7,[Travelers],Content,NumberOnLink,Average,0.00345044325831337,0.00342927810465406,0.00347474768137848,1.05261986802985E-05,1.47156334806375E-05
+Scenario1,Path,Path7,[Travelers],Content,NumberOnLink,Maximum,2.7,2,3,0.34552620739967,0.483045891539648
+Scenario1,Path,Path7,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path7,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0654761904898751,0.0654761904897747,0.0654761904899899,4.07110147493742E-14,5.69140284989971E-14
+Scenario1,Path,Path7,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0654761905025225,0.0654761905025225,0.0654761905025225,0,0
+Scenario1,Path,Path7,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0654761904752377,0.0654761904752377,0.0654761904752377,0,0
+Scenario1,Path,Path7,[Travelers],Throughput,NumberEntered,Total,27697.9,27528,27893,84.4974331210126,118.127473519076
+Scenario1,Path,Path7,[Travelers],Throughput,NumberExited,Total,27697.9,27528,27893,84.4974331210126,118.127473519076
+Scenario1,Path,Path8,[Travelers],Content,NumberOnLink,Average,0.00302573249682759,0.00300485386378799,0.00304459302810382,1.01918909680357E-05,1.42482710535328E-05
+Scenario1,Path,Path8,[Travelers],Content,NumberOnLink,Maximum,2.7,2,3,0.34552620739967,0.483045891539648
+Scenario1,Path,Path8,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path8,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0654761904898834,0.0654761904897632,0.0654761904900423,5.30456523110899E-14,7.41578608631383E-14
+Scenario1,Path,Path8,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0654761905025225,0.0654761905025225,0.0654761905025225,0,0
+Scenario1,Path,Path8,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0654761904752377,0.0654761904752377,0.0654761904752377,0,0
+Scenario1,Path,Path8,[Travelers],Throughput,NumberEntered,Total,24288.6,24121,24440,81.8138296270258,114.375793864883
+Scenario1,Path,Path8,[Travelers],Throughput,NumberExited,Total,24288.6,24121,24440,81.8138296270258,114.375793864883
+Scenario1,Path,Path9,[Travelers],Content,NumberOnLink,Average,0.00261507370316388,0.00259363448629871,0.0026348685408134,1.15341097448518E-05,1.61246938886274E-05
+Scenario1,Path,Path9,[Travelers],Content,NumberOnLink,Maximum,2.4,2,3,0.369383053211703,0.516397779494322
+Scenario1,Path,Path9,[Travelers],Content,NumberOnLink,Minimum,0,0,0,0,0
+Scenario1,Path,Path9,[Travelers],FlowTime,TimeOnLink,Average (Minutes),0.0654761904898957,0.0654761904897221,0.0654761904900646,6.79123197779603E-14,9.49414728930394E-14
+Scenario1,Path,Path9,[Travelers],FlowTime,TimeOnLink,Maximum (Minutes),0.0654761905025225,0.0654761905025225,0.0654761905025225,0,0
+Scenario1,Path,Path9,[Travelers],FlowTime,TimeOnLink,Minimum (Minutes),0.0654761904752377,0.0654761904752377,0.0654761904752377,0,0
+Scenario1,Path,Path9,[Travelers],Throughput,NumberEntered,Total,20992.1,20820,21151,92.58828342312,129.438488179607
+Scenario1,Path,Path9,[Travelers],Throughput,NumberExited,Total,20992.1,20820,21151,92.58828342312,129.438488179607
+Scenario1,Server,CheckOut,[Resource],Capacity,ScheduledUtilization,Percent,21.4694926635626,21.3753771544452,21.5732779481369,0.0482816436019239,0.0674977731912359
+Scenario1,Server,CheckOut,[Resource],Capacity,UnitsAllocated,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,CheckOut,[Resource],Capacity,UnitsScheduled,Average,2,2,2,0,0
+Scenario1,Server,CheckOut,[Resource],Capacity,UnitsScheduled,Maximum,2,2,2,0,0
+Scenario1,Server,CheckOut,[Resource],Capacity,UnitsScheduled,Minimum,2,2,2,0,0
+Scenario1,Server,CheckOut,[Resource],Capacity,UnitsUtilized,Average,0.429389853271252,0.427507543088904,0.431465558962737,0.000965632872038471,0.00134995546382471
+Scenario1,Server,CheckOut,[Resource],Capacity,UnitsUtilized,Maximum,2,2,2,0,0
+Scenario1,Server,CheckOut,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,CheckOut,[Resource],ResourceState,TimeProcessing,Average (Minutes),13.8447497314214,13.7334391642321,14.0465827805173,0.0641893440591975,0.0897367501057746
+Scenario1,Server,CheckOut,[Resource],ResourceState,TimeProcessing,Occurrences,10280,10129,10346,43.9291555848732,61.4129917489415
+Scenario1,Server,CheckOut,[Resource],ResourceState,TimeProcessing,Percent,27.0775381819139,26.9756108725466,27.2151393085254,0.0537274369226392,0.075110996250472
+Scenario1,Server,CheckOut,[Resource],ResourceState,TimeProcessing,Total (Minutes),142319.54068414,141783.810746105,143042.77220561,282.391408465395,394.783396292485
+Scenario1,Server,CheckOut,[Resource],ResourceState,TimeStarved,Average (Minutes),37.2816842419703,37.0427111295845,37.8402924991254,0.16454578093866,0.230035122518693
+Scenario1,Server,CheckOut,[Resource],ResourceState,TimeStarved,Occurrences,10281,10130,10347,43.9291555848732,61.4129917489415
+Scenario1,Server,CheckOut,[Resource],ResourceState,TimeStarved,Percent,72.9224618180861,72.7848606914745,73.0243891274534,0.0537274369226388,0.0751109962504714
+Scenario1,Server,CheckOut,[Resource],ResourceState,TimeStarved,Total (Minutes),383280.45931586,382557.22779439,383816.189253895,282.391408465391,394.783396292481
+Scenario1,Server,CheckOut,InputBuffer,Content,NumberInStation,Average,0.135385403564083,0.130098765213332,0.139183288136631,0.00184569552508257,0.00258028369869203
+Scenario1,Server,CheckOut,InputBuffer,Content,NumberInStation,Maximum,9.2,8,10,0.56424193392551,0.788810637746616
+Scenario1,Server,CheckOut,InputBuffer,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,CheckOut,InputBuffer,HoldingTime,TimeInStation,Average (Minutes),1.68382888706916,1.62287672946784,1.725184799656,0.0210653047440133,0.0294493114927641
+Scenario1,Server,CheckOut,InputBuffer,HoldingTime,TimeInStation,Maximum (Minutes),25.5665796885959,24.0128341167338,27.245704311303,0.813944407826994,1.13789487952709
+Scenario1,Server,CheckOut,InputBuffer,HoldingTime,TimeInStation,Minimum (Minutes),0,0,0,0,0
+Scenario1,Server,CheckOut,InputBuffer,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,CheckOut,InputBuffer,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,CheckOut,OutputBuffer,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,CheckOut,OutputBuffer,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,CheckOut,Processing,Content,NumberInStation,Average,0.429389853271252,0.427507543088904,0.431465558962737,0.000965632872038471,0.00134995546382471
+Scenario1,Server,CheckOut,Processing,Content,NumberInStation,Maximum,2,2,2,0,0
+Scenario1,Server,CheckOut,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,CheckOut,Processing,HoldingTime,TimeInStation,Average (Minutes),5.34056967417044,5.32936091187251,5.35011871019643,0.00481568432972834,0.00673233022737528
+Scenario1,Server,CheckOut,Processing,HoldingTime,TimeInStation,Maximum (Minutes),11.9593996031108,11.9283726663798,11.9788982366845,0.0102783644641076,0.0143691610645074
+Scenario1,Server,CheckOut,Processing,HoldingTime,TimeInStation,Minimum (Minutes),1.01920722111845,1.00562588057073,1.03231774781307,0.00650554528818515,0.00909475708755153
+Scenario1,Server,CheckOut,Processing,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,CheckOut,Processing,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,ExamRoom1,[Resource],Capacity,ScheduledUtilization,Percent,35.1318796253215,34.9264664816262,35.3880862468795,0.117472932890789,0.164227246399205
+Scenario1,Server,ExamRoom1,[Resource],Capacity,UnitsAllocated,Total,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Server,ExamRoom1,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom1,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom1,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom1,[Resource],Capacity,UnitsUtilized,Average,0.351318796253215,0.349264664816262,0.353880862468795,0.00117472932890789,0.00164227246399205
+Scenario1,Server,ExamRoom1,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom1,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom1,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.743570561391,47.9738712104839,49.4673963426104,0.290598978134912,0.406257584714321
+Scenario1,Server,ExamRoom1,[Resource],ResourceState,TimeProcessing,Occurrences,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Server,ExamRoom1,[Resource],ResourceState,TimeProcessing,Percent,35.1318796253215,34.9264664816262,35.3880862468795,0.117472932890789,0.164227246399205
+Scenario1,Server,ExamRoom1,[Resource],ResourceState,TimeProcessing,Total (Minutes),184653.15931069,183573.507827427,185999.781313599,617.43773527399,863.178407074224
+Scenario1,Server,ExamRoom1,[Resource],ResourceState,TimeStarved,Average (Minutes),89.9802124570921,88.7000689536374,92.140757589594,0.729349900005655,1.01963169550571
+Scenario1,Server,ExamRoom1,[Resource],ResourceState,TimeStarved,Occurrences,3789.5,3712,3846,26.3668312582305,36.8608494506329
+Scenario1,Server,ExamRoom1,[Resource],ResourceState,TimeStarved,Percent,64.8681203746785,64.6119137531205,65.0735335183738,0.117472932890789,0.164227246399205
+Scenario1,Server,ExamRoom1,[Resource],ResourceState,TimeStarved,Total (Minutes),340946.84068931,339600.218686401,342026.492172573,617.437735273992,863.178407074228
+Scenario1,Server,ExamRoom1,OutputBuffer,Throughput,NumberEntered,Total,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Server,ExamRoom1,OutputBuffer,Throughput,NumberExited,Total,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Server,ExamRoom1,Processing,Content,NumberInStation,Average,0.351318796253215,0.349264664816262,0.353880862468795,0.00117472932890789,0.00164227246399205
+Scenario1,Server,ExamRoom1,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom1,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom1,Processing,HoldingTime,TimeInStation,Average (Minutes),48.743570561391,47.9738712104839,49.4673963426104,0.290598978134912,0.406257584714321
+Scenario1,Server,ExamRoom1,Processing,HoldingTime,TimeInStation,Maximum (Minutes),290.618005549869,248.358799594371,351.170404904969,22.8104504102328,31.8890264149681
+Scenario1,Server,ExamRoom1,Processing,HoldingTime,TimeInStation,Minimum (Minutes),4.03364386959373,2.79815936339219,5.03251297941461,0.618369689017159,0.864481279091171
+Scenario1,Server,ExamRoom1,Processing,Throughput,NumberEntered,Total,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Server,ExamRoom1,Processing,Throughput,NumberExited,Total,3788.5,3711,3845,26.3668312582305,36.8608494506329
+Scenario1,Server,ExamRoom10,[Resource],Capacity,ScheduledUtilization,Percent,27.783987834032,27.3747939519023,28.1835020105159,0.178540339132786,0.249599525145224
+Scenario1,Server,ExamRoom10,[Resource],Capacity,UnitsAllocated,Total,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Server,ExamRoom10,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom10,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom10,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom10,[Resource],Capacity,UnitsUtilized,Average,0.27783987834032,0.273747939519023,0.281835020105159,0.00178540339132786,0.00249599525145224
+Scenario1,Server,ExamRoom10,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom10,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom10,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.7734186516832,47.2642934099916,49.4876046805515,0.459665753838746,0.642613061232858
+Scenario1,Server,ExamRoom10,[Resource],ResourceState,TimeProcessing,Occurrences,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Server,ExamRoom10,[Resource],ResourceState,TimeProcessing,Percent,27.783987834032,27.3747939519023,28.1835020105159,0.178540339132786,0.249599525145224
+Scenario1,Server,ExamRoom10,[Resource],ResourceState,TimeProcessing,Total (Minutes),146032.640055672,143881.917011199,148132.486567272,938.408022481923,1311.89510416329
+Scenario1,Server,ExamRoom10,[Resource],ResourceState,TimeStarved,Average (Minutes),126.731611532466,123.844842102186,129.002393710308,1.09840938711403,1.53557712935011
+Scenario1,Server,ExamRoom10,[Resource],ResourceState,TimeStarved,Occurrences,2995.4,2959,3072,24.0718559284489,33.652472255228
+Scenario1,Server,ExamRoom10,[Resource],ResourceState,TimeStarved,Percent,72.216012165968,71.8164979894841,72.6252060480977,0.178540339132785,0.249599525145223
+Scenario1,Server,ExamRoom10,[Resource],ResourceState,TimeStarved,Total (Minutes),379567.359944328,377467.513432728,381718.082988801,938.408022481927,1311.8951041633
+Scenario1,Server,ExamRoom10,OutputBuffer,Throughput,NumberEntered,Total,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Server,ExamRoom10,OutputBuffer,Throughput,NumberExited,Total,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Server,ExamRoom10,Processing,Content,NumberInStation,Average,0.27783987834032,0.273747939519023,0.281835020105159,0.00178540339132786,0.00249599525145224
+Scenario1,Server,ExamRoom10,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom10,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom10,Processing,HoldingTime,TimeInStation,Average (Minutes),48.7734186516832,47.2642934099916,49.4876046805515,0.459665753838746,0.642613061232858
+Scenario1,Server,ExamRoom10,Processing,HoldingTime,TimeInStation,Maximum (Minutes),266.152795355722,229.748454193959,317.533535784351,21.4393219548742,29.9721878280531
+Scenario1,Server,ExamRoom10,Processing,HoldingTime,TimeInStation,Minimum (Minutes),4.31214931483692,3.34214280213928,5.04016248558401,0.447771960154861,0.625985528933476
+Scenario1,Server,ExamRoom10,Processing,Throughput,NumberEntered,Total,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Server,ExamRoom10,Processing,Throughput,NumberExited,Total,2994.4,2958,3071,24.0718559284489,33.652472255228
+Scenario1,Server,ExamRoom11,[Resource],Capacity,ScheduledUtilization,Percent,27.2298274864428,26.7312738745282,27.7614566788119,0.22866277425263,0.319670726229538
+Scenario1,Server,ExamRoom11,[Resource],Capacity,UnitsAllocated,Total,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Server,ExamRoom11,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom11,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom11,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom11,[Resource],Capacity,UnitsUtilized,Average,0.272298274864428,0.267312738745282,0.277614566788119,0.0022866277425263,0.00319670726229539
+Scenario1,Server,ExamRoom11,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom11,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom11,[Resource],ResourceState,TimeProcessing,Average (Minutes),49.0483968809267,47.5829901021977,49.8681532138877,0.507935050056119,0.710093572771429
+Scenario1,Server,ExamRoom11,[Resource],ResourceState,TimeProcessing,Occurrences,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Server,ExamRoom11,[Resource],ResourceState,TimeProcessing,Percent,27.2298274864428,26.7312738745282,27.7614566788119,0.22866277425263,0.319670726229538
+Scenario1,Server,ExamRoom11,[Resource],ResourceState,TimeProcessing,Total (Minutes),143119.973268744,140499.57548452,145914.216303835,1201.85154147182,1680.18933706245
+Scenario1,Server,ExamRoom11,[Resource],ResourceState,TimeStarved,Average (Minutes),131.044834102353,128.230706359263,135.694300393051,1.55949638675721,2.18017709326066
+Scenario1,Server,ExamRoom11,[Resource],ResourceState,TimeStarved,Occurrences,2919.3,2838,2967,29.8093306392478,41.6734661118772
+Scenario1,Server,ExamRoom11,[Resource],ResourceState,TimeStarved,Percent,72.7701725135572,72.2385433211881,73.2687261254718,0.22866277425263,0.319670726229538
+Scenario1,Server,ExamRoom11,[Resource],ResourceState,TimeStarved,Total (Minutes),382480.026731256,379685.783696165,385100.42451548,1201.85154147182,1680.18933706245
+Scenario1,Server,ExamRoom11,OutputBuffer,Throughput,NumberEntered,Total,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Server,ExamRoom11,OutputBuffer,Throughput,NumberExited,Total,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Server,ExamRoom11,Processing,Content,NumberInStation,Average,0.272298274864428,0.267312738745282,0.277614566788119,0.0022866277425263,0.00319670726229539
+Scenario1,Server,ExamRoom11,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom11,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom11,Processing,HoldingTime,TimeInStation,Average (Minutes),49.0483968809267,47.5829901021977,49.8681532138877,0.507935050056119,0.710093572771429
+Scenario1,Server,ExamRoom11,Processing,HoldingTime,TimeInStation,Maximum (Minutes),264.997808389389,221.369590239474,309.894941050143,19.5704778020782,27.359542330828
+Scenario1,Server,ExamRoom11,Processing,HoldingTime,TimeInStation,Minimum (Minutes),3.66889290922518,2.57301951533009,4.44532003490167,0.401600209225944,0.561437387247635
+Scenario1,Server,ExamRoom11,Processing,Throughput,NumberEntered,Total,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Server,ExamRoom11,Processing,Throughput,NumberExited,Total,2918.3,2837,2966,29.8093306392478,41.6734661118772
+Scenario1,Server,ExamRoom12,[Resource],Capacity,ScheduledUtilization,Percent,26.533179674763,26.0459522104974,26.9611190496033,0.19668944281797,0.274971985417433
+Scenario1,Server,ExamRoom12,[Resource],Capacity,UnitsAllocated,Total,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Server,ExamRoom12,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom12,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom12,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom12,[Resource],Capacity,UnitsUtilized,Average,0.26533179674763,0.260459522104974,0.269611190496033,0.0019668944281797,0.00274971985417433
+Scenario1,Server,ExamRoom12,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom12,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom12,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.7925673367469,47.6970190461828,49.443172094466,0.410776742581505,0.574266187613718
+Scenario1,Server,ExamRoom12,[Resource],ResourceState,TimeProcessing,Occurrences,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Server,ExamRoom12,[Resource],ResourceState,TimeProcessing,Percent,26.533179674763,26.0459522104974,26.9611190496033,0.19668944281797,0.274971985417433
+Scenario1,Server,ExamRoom12,[Resource],ResourceState,TimeProcessing,Total (Minutes),139458.392370554,136897.524818375,141707.641724715,1033.79971145125,1445.25275535403
+Scenario1,Server,ExamRoom12,[Resource],ResourceState,TimeStarved,Average (Minutes),135.061154608185,132.23987539624,138.355842972377,1.30760144907231,1.82802778550184
+Scenario1,Server,ExamRoom12,[Resource],ResourceState,TimeStarved,Occurrences,2859.4,2799,2903,23.4812597072644,32.8268183045509
+Scenario1,Server,ExamRoom12,[Resource],ResourceState,TimeStarved,Percent,73.466820325237,73.0388809503967,73.9540477895026,0.196689442817968,0.27497198541743
+Scenario1,Server,ExamRoom12,[Resource],ResourceState,TimeStarved,Total (Minutes),386141.607629446,383892.358275285,388702.475181625,1033.79971145125,1445.25275535402
+Scenario1,Server,ExamRoom12,OutputBuffer,Throughput,NumberEntered,Total,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Server,ExamRoom12,OutputBuffer,Throughput,NumberExited,Total,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Server,ExamRoom12,Processing,Content,NumberInStation,Average,0.26533179674763,0.260459522104974,0.269611190496033,0.0019668944281797,0.00274971985417433
+Scenario1,Server,ExamRoom12,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom12,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom12,Processing,HoldingTime,TimeInStation,Average (Minutes),48.7925673367469,47.6970190461828,49.443172094466,0.410776742581505,0.574266187613718
+Scenario1,Server,ExamRoom12,Processing,HoldingTime,TimeInStation,Maximum (Minutes),280.804520214247,224.9997221171,383.854618559924,40.1032780979048,56.0644122142017
+Scenario1,Server,ExamRoom12,Processing,HoldingTime,TimeInStation,Minimum (Minutes),3.86177515518375,2.87034535753264,4.79441659939766,0.513650279580145,0.718083467840644
+Scenario1,Server,ExamRoom12,Processing,Throughput,NumberEntered,Total,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Server,ExamRoom12,Processing,Throughput,NumberExited,Total,2858.4,2798,2902,23.4812597072644,32.8268183045509
+Scenario1,Server,ExamRoom13,[Resource],Capacity,ScheduledUtilization,Percent,26.0250781078325,25.6047217320646,26.663965276867,0.250712148170733,0.350495767149927
+Scenario1,Server,ExamRoom13,[Resource],Capacity,UnitsAllocated,Total,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Server,ExamRoom13,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom13,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom13,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom13,[Resource],Capacity,UnitsUtilized,Average,0.260250781078325,0.256047217320646,0.26663965276867,0.00250712148170734,0.00350495767149927
+Scenario1,Server,ExamRoom13,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom13,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom13,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.892296331336,48.0465610223962,49.7425265874794,0.431409388197176,0.603110641327515
+Scenario1,Server,ExamRoom13,[Resource],ResourceState,TimeProcessing,Occurrences,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Server,ExamRoom13,[Resource],ResourceState,TimeProcessing,Percent,26.0250781078325,25.6047217320646,26.663965276867,0.250712148170733,0.350495767149927
+Scenario1,Server,ExamRoom13,[Resource],ResourceState,TimeProcessing,Total (Minutes),136787.810534767,134578.417423732,140145.801495213,1317.74305078538,1842.20575214002
+Scenario1,Server,ExamRoom13,[Resource],ResourceState,TimeStarved,Average (Minutes),138.939906762211,135.627796799714,143.227276102164,1.56345317052078,2.18570867986618
+Scenario1,Server,ExamRoom13,[Resource],ResourceState,TimeStarved,Occurrences,2798.9,2724,2842,25.0220100239769,34.9807883781306
+Scenario1,Server,ExamRoom13,[Resource],ResourceState,TimeStarved,Percent,73.9749218921675,73.336034723133,74.3952782679354,0.250712148170735,0.35049576714993
+Scenario1,Server,ExamRoom13,[Resource],ResourceState,TimeStarved,Total (Minutes),388812.189465232,385454.198504787,391021.582576268,1317.74305078539,1842.20575214003
+Scenario1,Server,ExamRoom13,OutputBuffer,Throughput,NumberEntered,Total,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Server,ExamRoom13,OutputBuffer,Throughput,NumberExited,Total,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Server,ExamRoom13,Processing,Content,NumberInStation,Average,0.260250781078325,0.256047217320646,0.26663965276867,0.00250712148170734,0.00350495767149927
+Scenario1,Server,ExamRoom13,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom13,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom13,Processing,HoldingTime,TimeInStation,Average (Minutes),48.892296331336,48.0465610223962,49.7425265874794,0.431409388197176,0.603110641327515
+Scenario1,Server,ExamRoom13,Processing,HoldingTime,TimeInStation,Maximum (Minutes),268.463534164967,221.235659471604,337.135720374408,26.303709818358,36.772605631364
+Scenario1,Server,ExamRoom13,Processing,HoldingTime,TimeInStation,Minimum (Minutes),4.07162129309245,3.11737774274661,5.89794838595481,0.621268324745144,0.868533573966314
+Scenario1,Server,ExamRoom13,Processing,Throughput,NumberEntered,Total,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Server,ExamRoom13,Processing,Throughput,NumberExited,Total,2797.9,2723,2841,25.0220100239769,34.9807883781306
+Scenario1,Server,ExamRoom14,[Resource],ResourceState,TimeOffShift,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom14,[Resource],ResourceState,TimeOffShift,Occurrences,1,1,1,0,0
+Scenario1,Server,ExamRoom14,[Resource],ResourceState,TimeOffShift,Percent,100,100,100,0,0
+Scenario1,Server,ExamRoom14,[Resource],ResourceState,TimeOffShift,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom15,[Resource],ResourceState,TimeOffShift,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom15,[Resource],ResourceState,TimeOffShift,Occurrences,1,1,1,0,0
+Scenario1,Server,ExamRoom15,[Resource],ResourceState,TimeOffShift,Percent,100,100,100,0,0
+Scenario1,Server,ExamRoom15,[Resource],ResourceState,TimeOffShift,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom16,[Resource],ResourceState,TimeOffShift,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom16,[Resource],ResourceState,TimeOffShift,Occurrences,1,1,1,0,0
+Scenario1,Server,ExamRoom16,[Resource],ResourceState,TimeOffShift,Percent,100,100,100,0,0
+Scenario1,Server,ExamRoom16,[Resource],ResourceState,TimeOffShift,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom17,[Resource],ResourceState,TimeOffShift,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom17,[Resource],ResourceState,TimeOffShift,Occurrences,1,1,1,0,0
+Scenario1,Server,ExamRoom17,[Resource],ResourceState,TimeOffShift,Percent,100,100,100,0,0
+Scenario1,Server,ExamRoom17,[Resource],ResourceState,TimeOffShift,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom18,[Resource],ResourceState,TimeOffShift,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom18,[Resource],ResourceState,TimeOffShift,Occurrences,1,1,1,0,0
+Scenario1,Server,ExamRoom18,[Resource],ResourceState,TimeOffShift,Percent,100,100,100,0,0
+Scenario1,Server,ExamRoom18,[Resource],ResourceState,TimeOffShift,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom19,[Resource],ResourceState,TimeOffShift,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom19,[Resource],ResourceState,TimeOffShift,Occurrences,1,1,1,0,0
+Scenario1,Server,ExamRoom19,[Resource],ResourceState,TimeOffShift,Percent,100,100,100,0,0
+Scenario1,Server,ExamRoom19,[Resource],ResourceState,TimeOffShift,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom2,[Resource],Capacity,ScheduledUtilization,Percent,34.0943022484475,33.7870694822679,34.3915751404136,0.125576856868201,0.175556538067406
+Scenario1,Server,ExamRoom2,[Resource],Capacity,UnitsAllocated,Total,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Server,ExamRoom2,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom2,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom2,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom2,[Resource],Capacity,UnitsUtilized,Average,0.340943022484475,0.337870694822679,0.343915751404136,0.00125576856868201,0.00175556538067406
+Scenario1,Server,ExamRoom2,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom2,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom2,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.5395364957389,47.3181021046629,49.489766657549,0.492939738165352,0.689130115742503
+Scenario1,Server,ExamRoom2,[Resource],ResourceState,TimeProcessing,Occurrences,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Server,ExamRoom2,[Resource],ResourceState,TimeProcessing,Percent,34.0943022484475,33.7870694822679,34.3915751404136,0.125576856868201,0.175556538067406
+Scenario1,Server,ExamRoom2,[Resource],ResourceState,TimeProcessing,Total (Minutes),179199.65261784,177584.8371988,180762.118938014,660.031959699261,922.725164082285
+Scenario1,Server,ExamRoom2,[Resource],ResourceState,TimeStarved,Average (Minutes),93.7991104195326,92.7051579118807,95.2375157671916,0.595181776732117,0.832064560698186
+Scenario1,Server,ExamRoom2,[Resource],ResourceState,TimeStarved,Occurrences,3693.3,3632,3754,27.4067331938704,38.3146331198814
+Scenario1,Server,ExamRoom2,[Resource],ResourceState,TimeStarved,Percent,65.9056977515525,65.6084248595864,66.2129305177321,0.125576856868203,0.175556538067409
+Scenario1,Server,ExamRoom2,[Resource],ResourceState,TimeStarved,Total (Minutes),346400.34738216,344837.881061986,348015.1628012,660.031959699264,922.725164082289
+Scenario1,Server,ExamRoom2,OutputBuffer,Throughput,NumberEntered,Total,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Server,ExamRoom2,OutputBuffer,Throughput,NumberExited,Total,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Server,ExamRoom2,Processing,Content,NumberInStation,Average,0.340943022484475,0.337870694822679,0.343915751404136,0.00125576856868201,0.00175556538067406
+Scenario1,Server,ExamRoom2,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom2,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom2,Processing,HoldingTime,TimeInStation,Average (Minutes),48.5395364957389,47.3181021046629,49.489766657549,0.492939738165352,0.689130115742503
+Scenario1,Server,ExamRoom2,Processing,HoldingTime,TimeInStation,Maximum (Minutes),266.570355197277,233.131010944608,317.116878070385,16.3362071485647,22.8380295834612
+Scenario1,Server,ExamRoom2,Processing,HoldingTime,TimeInStation,Minimum (Minutes),3.8833326231919,2.94933519147889,4.90214649458721,0.456903100539535,0.638750869892944
+Scenario1,Server,ExamRoom2,Processing,Throughput,NumberEntered,Total,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Server,ExamRoom2,Processing,Throughput,NumberExited,Total,3692.3,3631,3753,27.4067331938704,38.3146331198814
+Scenario1,Server,ExamRoom20,[Resource],ResourceState,TimeOffShift,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom20,[Resource],ResourceState,TimeOffShift,Occurrences,1,1,1,0,0
+Scenario1,Server,ExamRoom20,[Resource],ResourceState,TimeOffShift,Percent,100,100,100,0,0
+Scenario1,Server,ExamRoom20,[Resource],ResourceState,TimeOffShift,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom21,[Resource],ResourceState,TimeOffShift,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom21,[Resource],ResourceState,TimeOffShift,Occurrences,1,1,1,0,0
+Scenario1,Server,ExamRoom21,[Resource],ResourceState,TimeOffShift,Percent,100,100,100,0,0
+Scenario1,Server,ExamRoom21,[Resource],ResourceState,TimeOffShift,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom22,[Resource],ResourceState,TimeOffShift,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom22,[Resource],ResourceState,TimeOffShift,Occurrences,1,1,1,0,0
+Scenario1,Server,ExamRoom22,[Resource],ResourceState,TimeOffShift,Percent,100,100,100,0,0
+Scenario1,Server,ExamRoom22,[Resource],ResourceState,TimeOffShift,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,ExamRoom3,[Resource],Capacity,ScheduledUtilization,Percent,33.2130005074016,32.9205828589366,33.4533791698137,0.106914841253556,0.149467026541366
+Scenario1,Server,ExamRoom3,[Resource],Capacity,UnitsAllocated,Total,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Server,ExamRoom3,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom3,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom3,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom3,[Resource],Capacity,UnitsUtilized,Average,0.332130005074016,0.329205828589366,0.334533791698137,0.00106914841253556,0.00149467026541365
+Scenario1,Server,ExamRoom3,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom3,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom3,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.7099899756323,47.7448826872255,49.6358529852469,0.39707388459565,0.555109582092441
+Scenario1,Server,ExamRoom3,[Resource],ResourceState,TimeProcessing,Occurrences,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Server,ExamRoom3,[Resource],ResourceState,TimeProcessing,Percent,33.2130005074016,32.9205828589366,33.4533791698137,0.106914841253556,0.149467026541366
+Scenario1,Server,ExamRoom3,[Resource],ResourceState,TimeProcessing,Total (Minutes),174567.530666903,173030.583506571,175830.960916541,561.944405628686,785.598691501412
+Scenario1,Server,ExamRoom3,[Resource],ResourceState,TimeStarved,Average (Minutes),97.9275096807947,95.4053746337677,101.109669198001,1.08262454953019,1.5135099148228
+Scenario1,Server,ExamRoom3,[Resource],ResourceState,TimeStarved,Occurrences,3585.3,3487,3672,35.4525155378289,49.5626427418429
+Scenario1,Server,ExamRoom3,[Resource],ResourceState,TimeStarved,Percent,66.7869994925984,66.5466208301863,67.0794171410634,0.106914841253556,0.149467026541365
+Scenario1,Server,ExamRoom3,[Resource],ResourceState,TimeStarved,Total (Minutes),351032.469333097,349769.039083459,352569.416493429,561.944405628683,785.598691501407
+Scenario1,Server,ExamRoom3,OutputBuffer,Throughput,NumberEntered,Total,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Server,ExamRoom3,OutputBuffer,Throughput,NumberExited,Total,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Server,ExamRoom3,Processing,Content,NumberInStation,Average,0.332130005074016,0.329205828589366,0.334533791698137,0.00106914841253556,0.00149467026541365
+Scenario1,Server,ExamRoom3,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom3,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom3,Processing,HoldingTime,TimeInStation,Average (Minutes),48.7099899756323,47.7448826872255,49.6358529852469,0.39707388459565,0.555109582092441
+Scenario1,Server,ExamRoom3,Processing,HoldingTime,TimeInStation,Maximum (Minutes),279.903728298097,249.087310301074,365.598442555415,24.3564182920539,34.0502906483989
+Scenario1,Server,ExamRoom3,Processing,HoldingTime,TimeInStation,Minimum (Minutes),3.92607954427325,3.3573007964128,5.56827749143849,0.440717236002607,0.616123019390893
+Scenario1,Server,ExamRoom3,Processing,Throughput,NumberEntered,Total,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Server,ExamRoom3,Processing,Throughput,NumberExited,Total,3584.3,3486,3671,35.4525155378289,49.5626427418429
+Scenario1,Server,ExamRoom4,[Resource],Capacity,ScheduledUtilization,Percent,32.3439193748954,32.1544290649924,32.5964450281239,0.0858652944466437,0.120039744656234
+Scenario1,Server,ExamRoom4,[Resource],Capacity,UnitsAllocated,Total,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Server,ExamRoom4,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom4,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom4,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom4,[Resource],Capacity,UnitsUtilized,Average,0.323439193748954,0.321544290649924,0.325964450281239,0.000858652944466434,0.00120039744656234
+Scenario1,Server,ExamRoom4,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom4,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom4,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.6338747723787,47.7107585309449,49.8040668327298,0.466778897133106,0.652557240778981
+Scenario1,Server,ExamRoom4,[Resource],ResourceState,TimeProcessing,Occurrences,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Server,ExamRoom4,[Resource],ResourceState,TimeProcessing,Percent,32.3439193748954,32.1544290649924,32.5964450281239,0.0858652944466437,0.120039744656234
+Scenario1,Server,ExamRoom4,[Resource],ResourceState,TimeProcessing,Total (Minutes),169999.64023445,169003.6791656,171326.915067819,451.307987611558,630.928897913164
+Scenario1,Server,ExamRoom4,[Resource],ResourceState,TimeStarved,Average (Minutes),101.701049160336,99.9845802604378,104.345435826165,0.898415261322989,1.25598519471089
+Scenario1,Server,ExamRoom4,[Resource],ResourceState,TimeStarved,Occurrences,3497,3410,3559,30.844037906863,43.1199876314144
+Scenario1,Server,ExamRoom4,[Resource],ResourceState,TimeStarved,Percent,67.6560806251046,67.4035549718761,67.8455709350076,0.0858652944466431,0.120039744656233
+Scenario1,Server,ExamRoom4,[Resource],ResourceState,TimeStarved,Total (Minutes),355600.35976555,354273.084932181,356596.3208344,451.307987611559,630.928897913166
+Scenario1,Server,ExamRoom4,OutputBuffer,Throughput,NumberEntered,Total,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Server,ExamRoom4,OutputBuffer,Throughput,NumberExited,Total,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Server,ExamRoom4,Processing,Content,NumberInStation,Average,0.323439193748954,0.321544290649924,0.325964450281239,0.000858652944466434,0.00120039744656234
+Scenario1,Server,ExamRoom4,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom4,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom4,Processing,HoldingTime,TimeInStation,Average (Minutes),48.6338747723787,47.7107585309449,49.8040668327298,0.466778897133106,0.652557240778981
+Scenario1,Server,ExamRoom4,Processing,HoldingTime,TimeInStation,Maximum (Minutes),260.331063203188,236.357136365542,294.036396611191,14.4533485192082,20.2057918377187
+Scenario1,Server,ExamRoom4,Processing,HoldingTime,TimeInStation,Minimum (Minutes),4.22809593509646,3.28893902444179,5.25541335451635,0.415542887269404,0.580929261385457
+Scenario1,Server,ExamRoom4,Processing,Throughput,NumberEntered,Total,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Server,ExamRoom4,Processing,Throughput,NumberExited,Total,3496,3409,3558,30.844037906863,43.1199876314144
+Scenario1,Server,ExamRoom5,[Resource],Capacity,ScheduledUtilization,Percent,31.4766956849533,31.1183381186394,31.8552636733622,0.148076473870145,0.207011019149455
+Scenario1,Server,ExamRoom5,[Resource],Capacity,UnitsAllocated,Total,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Server,ExamRoom5,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom5,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom5,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom5,[Resource],Capacity,UnitsUtilized,Average,0.314766956849533,0.311183381186393,0.318552636733622,0.00148076473870145,0.00207011019149455
+Scenario1,Server,ExamRoom5,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom5,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom5,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.5326652826738,47.6917977066492,49.5525460756734,0.447860347018841,0.62610909383419
+Scenario1,Server,ExamRoom5,[Resource],ResourceState,TimeProcessing,Occurrences,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Server,ExamRoom5,[Resource],ResourceState,TimeProcessing,Percent,31.4766956849533,31.1183381186394,31.8552636733622,0.148076473870145,0.207011019149455
+Scenario1,Server,ExamRoom5,[Resource],ResourceState,TimeProcessing,Total (Minutes),165441.512520115,163557.985151568,167431.265867192,778.289946661486,1088.04991664954
+Scenario1,Server,ExamRoom5,[Resource],ResourceState,TimeStarved,Average (Minutes),105.624750520515,103.696796216794,108.016264639577,1.02157351673637,1.42816052616935
+Scenario1,Server,ExamRoom5,[Resource],ResourceState,TimeStarved,Occurrences,3410.3,3336,3468,30.5571000515428,42.7188482990822
+Scenario1,Server,ExamRoom5,[Resource],ResourceState,TimeStarved,Percent,68.5233043150467,68.1447363266378,68.8816618813607,0.148076473870145,0.207011019149455
+Scenario1,Server,ExamRoom5,[Resource],ResourceState,TimeStarved,Total (Minutes),360158.487479885,358168.734132808,362042.014848432,778.289946661481,1088.04991664953
+Scenario1,Server,ExamRoom5,OutputBuffer,Throughput,NumberEntered,Total,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Server,ExamRoom5,OutputBuffer,Throughput,NumberExited,Total,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Server,ExamRoom5,Processing,Content,NumberInStation,Average,0.314766956849533,0.311183381186393,0.318552636733622,0.00148076473870145,0.00207011019149455
+Scenario1,Server,ExamRoom5,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom5,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom5,Processing,HoldingTime,TimeInStation,Average (Minutes),48.5326652826738,47.6917977066492,49.5525460756734,0.447860347018841,0.62610909383419
+Scenario1,Server,ExamRoom5,Processing,HoldingTime,TimeInStation,Maximum (Minutes),265.973928426624,230.719767526325,321.858726515547,21.7490899847051,30.4052437611073
+Scenario1,Server,ExamRoom5,Processing,HoldingTime,TimeInStation,Minimum (Minutes),4.24364624969064,3.46527250832878,5.05366392214455,0.379378434165546,0.530371329403787
+Scenario1,Server,ExamRoom5,Processing,Throughput,NumberEntered,Total,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Server,ExamRoom5,Processing,Throughput,NumberExited,Total,3409.3,3335,3467,30.5571000515428,42.7188482990822
+Scenario1,Server,ExamRoom6,[Resource],Capacity,ScheduledUtilization,Percent,30.618332413087,30.3787658375009,31.0820290749539,0.173836341489088,0.24302333298689
+Scenario1,Server,ExamRoom6,[Resource],Capacity,UnitsAllocated,Total,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Server,ExamRoom6,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom6,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom6,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom6,[Resource],Capacity,UnitsUtilized,Average,0.30618332413087,0.303787658375009,0.310820290749539,0.00173836341489088,0.0024302333298689
+Scenario1,Server,ExamRoom6,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom6,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom6,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.82347158321,47.8217906474098,50.253738150101,0.487867427516552,0.682039021732719
+Scenario1,Server,ExamRoom6,[Resource],ResourceState,TimeProcessing,Occurrences,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Server,ExamRoom6,[Resource],ResourceState,TimeProcessing,Percent,30.618332413087,30.3787658375009,31.0820290749539,0.173836341489088,0.24302333298689
+Scenario1,Server,ExamRoom6,[Resource],ResourceState,TimeProcessing,Total (Minutes),160929.955163185,159670.793241905,163367.144817958,913.683810866649,1277.3306381791
+Scenario1,Server,ExamRoom6,[Resource],ResourceState,TimeStarved,Average (Minutes),110.598859091814,108.481456985848,111.983994485131,0.770270849613351,1.07683921309072
+Scenario1,Server,ExamRoom6,[Resource],ResourceState,TimeStarved,Occurrences,3297.5,3240,3363,23.3697431607624,32.6709180906948
+Scenario1,Server,ExamRoom6,[Resource],ResourceState,TimeStarved,Percent,69.381667586913,68.9179709250461,69.6212341624991,0.173836341489088,0.243023332986889
+Scenario1,Server,ExamRoom6,[Resource],ResourceState,TimeStarved,Total (Minutes),364670.044836815,362232.855182042,365929.206758095,913.683810866644,1277.33063817909
+Scenario1,Server,ExamRoom6,OutputBuffer,Throughput,NumberEntered,Total,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Server,ExamRoom6,OutputBuffer,Throughput,NumberExited,Total,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Server,ExamRoom6,Processing,Content,NumberInStation,Average,0.30618332413087,0.303787658375009,0.310820290749539,0.00173836341489088,0.0024302333298689
+Scenario1,Server,ExamRoom6,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom6,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom6,Processing,HoldingTime,TimeInStation,Average (Minutes),48.82347158321,47.8217906474098,50.253738150101,0.487867427516552,0.682039021732719
+Scenario1,Server,ExamRoom6,Processing,HoldingTime,TimeInStation,Maximum (Minutes),285.712911353238,229.376913290071,375.011696329102,33.7301882969481,47.1548279950096
+Scenario1,Server,ExamRoom6,Processing,HoldingTime,TimeInStation,Minimum (Minutes),4.01596618459871,2.97307637783888,5.04779682749358,0.410851758886557,0.574371060463238
+Scenario1,Server,ExamRoom6,Processing,Throughput,NumberEntered,Total,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Server,ExamRoom6,Processing,Throughput,NumberExited,Total,3296.5,3239,3362,23.3697431607624,32.6709180906948
+Scenario1,Server,ExamRoom7,[Resource],Capacity,ScheduledUtilization,Percent,29.8283510126448,29.5700298121096,30.2328784345376,0.154178933630289,0.215542262372965
+Scenario1,Server,ExamRoom7,[Resource],Capacity,UnitsAllocated,Total,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Server,ExamRoom7,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom7,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom7,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom7,[Resource],Capacity,UnitsUtilized,Average,0.298283510126448,0.295700298121096,0.302328784345376,0.00154178933630289,0.00215542262372965
+Scenario1,Server,ExamRoom7,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom7,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom7,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.5756600482331,47.2277795003587,49.5659394976477,0.487494314000185,0.681517408762994
+Scenario1,Server,ExamRoom7,[Resource],ResourceState,TimeProcessing,Occurrences,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Server,ExamRoom7,[Resource],ResourceState,TimeProcessing,Percent,29.8283510126448,29.5700298121096,30.2328784345376,0.154178933630289,0.215542262372965
+Scenario1,Server,ExamRoom7,[Resource],ResourceState,TimeProcessing,Total (Minutes),156777.812922461,155420.076692448,158904.00905193,810.364475160799,1132.8901310323
+Scenario1,Server,ExamRoom7,[Resource],ResourceState,TimeStarved,Average (Minutes),114.238510785968,111.914584344479,116.93693219684,0.948831350298142,1.32646692410045
+Scenario1,Server,ExamRoom7,[Resource],ResourceState,TimeStarved,Occurrences,3228.9,3157,3303,26.4641110797246,36.996846712479
+Scenario1,Server,ExamRoom7,[Resource],ResourceState,TimeStarved,Percent,70.1716489873552,69.7671215654624,70.4299701878904,0.154178933630292,0.215542262372968
+Scenario1,Server,ExamRoom7,[Resource],ResourceState,TimeStarved,Total (Minutes),368822.187077539,366695.99094807,370179.923307552,810.364475160804,1132.89013103231
+Scenario1,Server,ExamRoom7,OutputBuffer,Throughput,NumberEntered,Total,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Server,ExamRoom7,OutputBuffer,Throughput,NumberExited,Total,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Server,ExamRoom7,Processing,Content,NumberInStation,Average,0.298283510126448,0.295700298121096,0.302328784345376,0.00154178933630289,0.00215542262372965
+Scenario1,Server,ExamRoom7,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom7,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom7,Processing,HoldingTime,TimeInStation,Average (Minutes),48.5756600482331,47.2277795003587,49.5659394976477,0.487494314000185,0.681517408762994
+Scenario1,Server,ExamRoom7,Processing,HoldingTime,TimeInStation,Maximum (Minutes),276.547488386849,230.055138245489,375.731058752253,32.412037119618,45.3120516816606
+Scenario1,Server,ExamRoom7,Processing,HoldingTime,TimeInStation,Minimum (Minutes),3.93850088707646,2.82762741600891,4.58403797754727,0.397039717670639,0.5550618167062
+Scenario1,Server,ExamRoom7,Processing,Throughput,NumberEntered,Total,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Server,ExamRoom7,Processing,Throughput,NumberExited,Total,3227.9,3156,3302,26.4641110797246,36.996846712479
+Scenario1,Server,ExamRoom8,[Resource],Capacity,ScheduledUtilization,Percent,29.122256830861,28.7129771246398,29.571255677573,0.160129672642892,0.223861399880058
+Scenario1,Server,ExamRoom8,[Resource],Capacity,UnitsAllocated,Total,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Server,ExamRoom8,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom8,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom8,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom8,[Resource],Capacity,UnitsUtilized,Average,0.29122256830861,0.287129771246397,0.29571255677573,0.00160129672642892,0.00223861399880059
+Scenario1,Server,ExamRoom8,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom8,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom8,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.7693251627053,48.0629009498329,49.2380408235053,0.300598483840541,0.42023690102981
+Scenario1,Server,ExamRoom8,[Resource],ResourceState,TimeProcessing,Occurrences,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Server,ExamRoom8,[Resource],ResourceState,TimeProcessing,Percent,29.122256830861,28.7129771246398,29.571255677573,0.160129672642892,0.223861399880058
+Scenario1,Server,ExamRoom8,[Resource],ResourceState,TimeProcessing,Total (Minutes),153066.581903005,150915.407767107,155426.519841324,841.641559411038,1176.61551776959
+Scenario1,Server,ExamRoom8,[Resource],ResourceState,TimeStarved,Average (Minutes),118.660851937728,116.304848550151,120.03363953007,0.838415626300225,1.17210566091303
+Scenario1,Server,ExamRoom8,[Resource],ResourceState,TimeStarved,Occurrences,3139.7,3107,3198,18.4754618767705,25.8287092635738
+Scenario1,Server,ExamRoom8,[Resource],ResourceState,TimeStarved,Percent,70.877743169139,70.428744322427,71.2870228753603,0.160129672642893,0.223861399880061
+Scenario1,Server,ExamRoom8,[Resource],ResourceState,TimeStarved,Total (Minutes),372533.418096995,370173.480158676,374684.592232893,841.641559411044,1176.61551776959
+Scenario1,Server,ExamRoom8,OutputBuffer,Throughput,NumberEntered,Total,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Server,ExamRoom8,OutputBuffer,Throughput,NumberExited,Total,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Server,ExamRoom8,Processing,Content,NumberInStation,Average,0.29122256830861,0.287129771246397,0.29571255677573,0.00160129672642892,0.00223861399880059
+Scenario1,Server,ExamRoom8,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom8,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom8,Processing,HoldingTime,TimeInStation,Average (Minutes),48.7693251627053,48.0629009498329,49.2380408235053,0.300598483840541,0.42023690102981
+Scenario1,Server,ExamRoom8,Processing,HoldingTime,TimeInStation,Maximum (Minutes),273.817516750778,247.487858651293,352.732030108018,22.0388280212208,30.8102977488061
+Scenario1,Server,ExamRoom8,Processing,HoldingTime,TimeInStation,Minimum (Minutes),4.33292588634475,3.23911146562295,5.05658747679263,0.373751579537976,0.522504982504681
+Scenario1,Server,ExamRoom8,Processing,Throughput,NumberEntered,Total,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Server,ExamRoom8,Processing,Throughput,NumberExited,Total,3138.7,3106,3197,18.4754618767705,25.8287092635738
+Scenario1,Server,ExamRoom9,[Resource],Capacity,ScheduledUtilization,Percent,28.4645365074831,27.7173273641116,29.0181853568623,0.258102740163648,0.36082782018026
+Scenario1,Server,ExamRoom9,[Resource],Capacity,UnitsAllocated,Total,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Server,ExamRoom9,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,ExamRoom9,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom9,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,ExamRoom9,[Resource],Capacity,UnitsUtilized,Average,0.284645365074831,0.277173273641116,0.290181853568623,0.00258102740163648,0.0036082782018026
+Scenario1,Server,ExamRoom9,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom9,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom9,[Resource],ResourceState,TimeProcessing,Average (Minutes),48.9531115330225,47.2074765475602,50.0728708749029,0.534026174623157,0.746568984065423
+Scenario1,Server,ExamRoom9,[Resource],ResourceState,TimeProcessing,Occurrences,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Server,ExamRoom9,[Resource],ResourceState,TimeProcessing,Percent,28.4645365074831,27.7173273641116,29.0181853568623,0.258102740163648,0.36082782018026
+Scenario1,Server,ExamRoom9,[Resource],ResourceState,TimeProcessing,Total (Minutes),149609.603883331,145682.272625771,152519.582235668,1356.58800230014,1896.51102286745
+Scenario1,Server,ExamRoom9,[Resource],ResourceState,TimeStarved,Average (Minutes),122.992473450694,119.922988673845,126.024305966261,1.29549427674791,1.81110194970642
+Scenario1,Server,ExamRoom9,[Resource],ResourceState,TimeStarved,Occurrences,3057.5,2985,3111,27.3946992281354,38.2978096269515
+Scenario1,Server,ExamRoom9,[Resource],ResourceState,TimeStarved,Percent,71.5354634925169,70.9818146431377,72.2826726358884,0.258102740163647,0.360827820180259
+Scenario1,Server,ExamRoom9,[Resource],ResourceState,TimeStarved,Total (Minutes),375990.396116669,373080.417764332,379917.727374229,1356.58800230014,1896.51102286746
+Scenario1,Server,ExamRoom9,OutputBuffer,Throughput,NumberEntered,Total,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Server,ExamRoom9,OutputBuffer,Throughput,NumberExited,Total,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Server,ExamRoom9,Processing,Content,NumberInStation,Average,0.284645365074831,0.277173273641116,0.290181853568623,0.00258102740163648,0.0036082782018026
+Scenario1,Server,ExamRoom9,Processing,Content,NumberInStation,Maximum,1,1,1,0,0
+Scenario1,Server,ExamRoom9,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,ExamRoom9,Processing,HoldingTime,TimeInStation,Average (Minutes),48.9531115330225,47.2074765475602,50.0728708749029,0.534026174623157,0.746568984065423
+Scenario1,Server,ExamRoom9,Processing,HoldingTime,TimeInStation,Maximum (Minutes),273.402968322234,222.977689153931,332.749857511726,27.2547446132386,38.1021529726078
+Scenario1,Server,ExamRoom9,Processing,HoldingTime,TimeInStation,Minimum (Minutes),3.9818304091549,2.67511585560896,4.80492867063163,0.513864924023347,0.718383540929776
+Scenario1,Server,ExamRoom9,Processing,Throughput,NumberEntered,Total,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Server,ExamRoom9,Processing,Throughput,NumberExited,Total,3056.5,2984,3110,27.3946992281354,38.2978096269515
+Scenario1,Server,Registration,[Resource],Capacity,ScheduledUtilization,Percent,37.4835291527531,37.2985743830635,37.6184464212117,0.064438478121491,0.0900850397077099
+Scenario1,Server,Registration,[Resource],Capacity,UnitsAllocated,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,Registration,[Resource],Capacity,UnitsScheduled,Average,1.43013698630137,1.43013698630137,1.43013698630137,1.67421632113474E-16,2.3405556457178E-16
+Scenario1,Server,Registration,[Resource],Capacity,UnitsScheduled,Maximum,3,3,3,0,0
+Scenario1,Server,Registration,[Resource],Capacity,UnitsScheduled,Minimum,0,0,0,0,0
+Scenario1,Server,Registration,[Resource],Capacity,UnitsUtilized,Average,0.536065814184579,0.533420707615319,0.537995315941712,0.000921558509025161,0.00128833947198424
+Scenario1,Server,Registration,[Resource],Capacity,UnitsUtilized,Maximum,3,3,3,0,0
+Scenario1,Server,Registration,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,Registration,[Resource],ResourceState,TimeOffShift,Average (Minutes),1053.79310344828,1053.79310344828,1053.79310344828,0,0
+Scenario1,Server,Registration,[Resource],ResourceState,TimeOffShift,Occurrences,261,261,261,0,0
+Scenario1,Server,Registration,[Resource],ResourceState,TimeOffShift,Percent,52.3287671232877,52.3287671232877,52.3287671232877,5.35749222763116E-15,7.48977806629696E-15
+Scenario1,Server,Registration,[Resource],ResourceState,TimeOffShift,Total (Minutes),275040,275040,275040,0,0
+Scenario1,Server,Registration,[Resource],ResourceState,TimeProcessing,Average (Minutes),18.4292863225388,18.155361503271,18.7029614180423,0.0992928354348839,0.13881145681278
+Scenario1,Server,Registration,[Resource],ResourceState,TimeProcessing,Occurrences,7661,7553,7756,40.8957255565909,57.1722543430523
+Scenario1,Server,Registration,[Resource],ResourceState,TimeProcessing,Percent,26.8607007627072,26.7617541814928,26.9111681376884,0.0364488996340214,0.0509555884396044
+Scenario1,Server,Registration,[Resource],ResourceState,TimeProcessing,Total (Minutes),141179.843208789,140659.779977926,141445.09973169,191.575416476418,267.822572838564
+Scenario1,Server,Registration,[Resource],ResourceState,TimeStarved,Average (Minutes),14.253698762972,14.1262731600759,14.451478567966,0.0816043384808968,0.114082925088841
+Scenario1,Server,Registration,[Resource],ResourceState,TimeStarved,Occurrences,7674.2,7563,7769,40.8398028908074,57.0940744152432
+Scenario1,Server,Registration,[Resource],ResourceState,TimeStarved,Percent,20.8105321140051,20.7600647390239,20.9094786952195,0.0364488996340211,0.0509555884396041
+Scenario1,Server,Registration,[Resource],ResourceState,TimeStarved,Total (Minutes),109380.156791211,109114.90026831,109900.220022074,191.575416476418,267.822572838564
+Scenario1,Server,Registration,InputBuffer,Content,NumberInStation,Average,0.138159700257057,0.13331456851954,0.141847565658284,0.0019142614386022,0.00267613889611562
+Scenario1,Server,Registration,InputBuffer,Content,NumberInStation,Maximum,13.2,11,16,1.15831677877859,1.61932770686548
+Scenario1,Server,Registration,InputBuffer,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,Registration,InputBuffer,HoldingTime,TimeInStation,Average (Minutes),1.71833113192998,1.6629912712441,1.75746264933275,0.0217879846308124,0.0304596185049116
+Scenario1,Server,Registration,InputBuffer,HoldingTime,TimeInStation,Maximum (Minutes),136.687315726359,115.224911812317,154.853576455293,8.70473131803219,12.1692207713445
+Scenario1,Server,Registration,InputBuffer,HoldingTime,TimeInStation,Minimum (Minutes),0,0,0,0,0
+Scenario1,Server,Registration,InputBuffer,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,Registration,InputBuffer,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,Registration,OutputBuffer,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,Registration,OutputBuffer,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,Registration,Processing,Content,NumberInStation,Average,0.536065814184579,0.533420707615319,0.537995315941712,0.000921558509025161,0.00128833947198424
+Scenario1,Server,Registration,Processing,Content,NumberInStation,Maximum,3,3,3,0,0
+Scenario1,Server,Registration,Processing,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,Registration,Processing,HoldingTime,TimeInStation,Average (Minutes),6.66738230560772,6.64594708961769,6.68806241181083,0.0104986647548176,0.0146771410326069
+Scenario1,Server,Registration,Processing,HoldingTime,TimeInStation,Maximum (Minutes),14.9407710447429,14.8923694643054,14.9863218253904,0.0222192728781147,0.0310625597911791
+Scenario1,Server,Registration,Processing,HoldingTime,TimeInStation,Minimum (Minutes),2.01663362941713,2.00694405679315,2.03629382127474,0.00588712453980183,0.00823020442742899
+Scenario1,Server,Registration,Processing,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,Registration,Processing,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,WaitingArea,[Resource],Capacity,ScheduledUtilization,Percent,0,0,0,0,0
+Scenario1,Server,WaitingArea,[Resource],Capacity,UnitsAllocated,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,WaitingArea,[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Server,WaitingArea,[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Server,WaitingArea,[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Server,WaitingArea,[Resource],Capacity,UnitsUtilized,Average,0,0,0,0,0
+Scenario1,Server,WaitingArea,[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Server,WaitingArea,[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Server,WaitingArea,[Resource],ResourceState,TimeStarved,Average (Minutes),525600,525600,525600,0,0
+Scenario1,Server,WaitingArea,[Resource],ResourceState,TimeStarved,Occurrences,1,1,1,0,0
+Scenario1,Server,WaitingArea,[Resource],ResourceState,TimeStarved,Percent,100,100,100,0,0
+Scenario1,Server,WaitingArea,[Resource],ResourceState,TimeStarved,Total (Minutes),525600,525600,525600,0,0
+Scenario1,Server,WaitingArea,InputBuffer,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,WaitingArea,InputBuffer,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,WaitingArea,OutputBuffer,Content,NumberInStation,Average,1.89710308637603,1.71682616100215,2.11953482414508,0.0823221634100921,0.115086444866695
+Scenario1,Server,WaitingArea,OutputBuffer,Content,NumberInStation,Maximum,37.5,30,44,2.7857213428482,3.89444048184931
+Scenario1,Server,WaitingArea,OutputBuffer,Content,NumberInStation,Minimum,0,0,0,0,0
+Scenario1,Server,WaitingArea,OutputBuffer,HoldingTime,TimeInStation,Average (Minutes),23.5928827124679,21.4160159065559,26.2606077877196,0.988309349214429,1.38165719555983
+Scenario1,Server,WaitingArea,OutputBuffer,HoldingTime,TimeInStation,Maximum (Minutes),146.653015927997,125.549537825091,165.911921963816,10.5837198235769,14.7960480811576
+Scenario1,Server,WaitingArea,OutputBuffer,HoldingTime,TimeInStation,Minimum (Minutes),0,0,0,0,0
+Scenario1,Server,WaitingArea,OutputBuffer,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,WaitingArea,OutputBuffer,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,WaitingArea,Processing,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Server,WaitingArea,Processing,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Sink,Exit,[DestroyedEntities],FlowTime,TimeInSystem,Average (Minutes),89.0531436632427,86.4121036557192,92.1522639193089,1.1688389741836,1.63403774376433
+Scenario1,Sink,Exit,[DestroyedEntities],FlowTime,TimeInSystem,Maximum (Minutes),409.390160733448,360.574220205144,458.867279653595,25.5330779575572,35.6952617243682
+Scenario1,Sink,Exit,[DestroyedEntities],FlowTime,TimeInSystem,Minimum (Minutes),11.8164900821985,10.1163053684468,13.2544919187421,0.768175394546018,1.07390976536866
+Scenario1,Sink,Exit,[DestroyedEntities],FlowTime,TimeInSystem,Observations,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Sink,Exit,InputBuffer,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Sink,Exit,InputBuffer,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Source,Entrance,OutputBuffer,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Source,Entrance,OutputBuffer,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Source,Entrance,Processing,Throughput,NumberEntered,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Source,Entrance,Processing,Throughput,NumberExited,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Worker,Nurse,[Population],Capacity,ScheduledUtilization,Percent,7.69477869064503,7.66727128481201,7.72739488675398,0.0136520505816708,0.0190855767329382
+Scenario1,Worker,Nurse,[Population],Capacity,UnitsAllocated,Total,42259,42118,42422,77.6048799651156,108.491679148423
+Scenario1,Worker,Nurse,[Population],Capacity,UnitsScheduled,Average,10,10,10,0,0
+Scenario1,Worker,Nurse,[Population],Capacity,UnitsScheduled,Maximum,10,10,10,0,0
+Scenario1,Worker,Nurse,[Population],Capacity,UnitsScheduled,Minimum,10,10,10,0,0
+Scenario1,Worker,Nurse,[Population],Capacity,UnitsUtilized,Average,0.769477869064503,0.766727128481201,0.772739488675398,0.00136520505816709,0.00190855767329383
+Scenario1,Worker,Nurse,[Population],Capacity,UnitsUtilized,Maximum,9.6,9,10,0.369383053211703,0.516397779494322
+Scenario1,Worker,Nurse,[Population],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[1],[Object],Travel,DistanceTraveled,Total (Meters),516046.590986131,514122.192701122,520661.247900562,1469.28537305099,2054.06202989005
+Scenario1,Worker,Nurse[1],[Resource],Capacity,ScheduledUtilization,Percent,24.1832893841434,24.1156388461486,24.2708362101807,0.0387596533186727,0.0541860237866975
+Scenario1,Worker,Nurse[1],[Resource],Capacity,UnitsAllocated,Total,13292.1,13245,13383,28.0796929335062,39.2554313298031
+Scenario1,Worker,Nurse[1],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[1],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[1],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[1],[Resource],Capacity,UnitsUtilized,Average,0.241832893841434,0.241156388461486,0.242708362101807,0.000387596533186729,0.000541860237866979
+Scenario1,Worker,Nurse[1],[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[1],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[1],[Resource],ResourceState,TimeBusy,Average (Minutes),9.56266345189596,9.52325610005508,9.58540988710412,0.0156347921218412,0.0218574508613064
+Scenario1,Worker,Nurse[1],[Resource],ResourceState,TimeBusy,Occurrences,13292.1,13245,13383,28.0796929335062,39.2554313298031
+Scenario1,Worker,Nurse[1],[Resource],ResourceState,TimeBusy,Percent,24.1832893841434,24.1156388461486,24.2708362101807,0.0387596533186727,0.0541860237866975
+Scenario1,Worker,Nurse[1],[Resource],ResourceState,TimeBusy,Total (Minutes),127107.369003058,126751.797775357,127567.51512071,203.720737842947,284.801741022886
+Scenario1,Worker,Nurse[1],[Resource],ResourceState,TimeIdle,Average (Minutes),29.9776751408694,29.7394265450755,30.1108411765547,0.0738798939301251,0.103284145937597
+Scenario1,Worker,Nurse[1],[Resource],ResourceState,TimeIdle,Occurrences,13293.1,13246,13384,28.0796929335062,39.2554313298031
+Scenario1,Worker,Nurse[1],[Resource],ResourceState,TimeIdle,Percent,75.8167106158566,75.7291637898193,75.8843611538514,0.0387596533186732,0.0541860237866983
+Scenario1,Worker,Nurse[1],[Resource],ResourceState,TimeIdle,Total (Minutes),398492.630996942,398032.48487929,398848.202224643,203.720737842941,284.801741022879
+Scenario1,Worker,Nurse[10],[Object],Travel,DistanceTraveled,Total (Meters),48.3183180935985,0,145.852068875829,35.3373958896319,49.4017053891729
+Scenario1,Worker,Nurse[10],[Resource],Capacity,ScheduledUtilization,Percent,0.0016776553106404,0,0.00603179080304548,0.0014678724952903,0.00205208682574365
+Scenario1,Worker,Nurse[10],[Resource],Capacity,UnitsAllocated,Total,1.1,0,3,0.787199110771855,1.10050493461461
+Scenario1,Worker,Nurse[10],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[10],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[10],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[10],[Resource],Capacity,UnitsUtilized,Average,1.6776553106404E-05,0,6.03179080304548E-05,1.4678724952903E-05,2.05208682574365E-05
+Scenario1,Worker,Nurse[10],[Resource],Capacity,UnitsUtilized,Maximum,0.6,0,1,0.369383053211703,0.516397779494322
+Scenario1,Worker,Nurse[10],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[10],[Resource],ResourceState,TimeBusy,Average (Minutes),7.40542068090756,4.48581510190479,10.5821387830565,2.78207914812246,2.65059289651378
+Scenario1,Worker,Nurse[10],[Resource],ResourceState,TimeBusy,Occurrences,1.1,0,3,0.787199110771855,1.10050493461461
+Scenario1,Worker,Nurse[10],[Resource],ResourceState,TimeBusy,Percent,0.0016776553106404,0,0.00603179080304548,0.0014678724952903,0.00205208682574365
+Scenario1,Worker,Nurse[10],[Resource],ResourceState,TimeBusy,Total (Minutes),8.81775631272592,0,31.7030924608071,7.71513783524581,10.7857683561086
+Scenario1,Worker,Nurse[10],[Resource],ResourceState,TimeIdle,Average (Minutes),328497.137353957,131392.074226885,525600,124669.330839805,174287.816013641
+Scenario1,Worker,Nurse[10],[Resource],ResourceState,TimeIdle,Occurrences,2.1,1,4,0.787199110771855,1.10050493461461
+Scenario1,Worker,Nurse[10],[Resource],ResourceState,TimeIdle,Percent,99.9983223446894,99.993968209197,100,0.00146787249529031,0.00205208682574367
+Scenario1,Worker,Nurse[10],[Resource],ResourceState,TimeIdle,Total (Minutes),525591.182243687,525568.296907539,525600,7.71513783524302,10.7857683561047
+Scenario1,Worker,Nurse[2],[Object],Travel,DistanceTraveled,Total (Meters),430457.290067624,427964.093737237,433470.397203341,1391.03942139662,1944.67413204955
+Scenario1,Worker,Nurse[2],[Resource],Capacity,ScheduledUtilization,Percent,19.7803489767916,19.7115360342057,19.8305753387156,0.0266425629515834,0.0372463225603103
+Scenario1,Worker,Nurse[2],[Resource],Capacity,UnitsAllocated,Total,10867.7,10836,10899,14.9057619047132,20.8382660826983
+Scenario1,Worker,Nurse[2],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[2],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[2],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[2],[Resource],Capacity,UnitsUtilized,Average,0.197803489767916,0.197115360342057,0.198305753387156,0.000266425629515832,0.0003724632256031
+Scenario1,Worker,Nurse[2],[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[2],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[2],[Resource],ResourceState,TimeBusy,Average (Minutes),9.56649029165504,9.534556225824,9.60445977408913,0.0150526345586927,0.021043594160757
+Scenario1,Worker,Nurse[2],[Resource],ResourceState,TimeBusy,Occurrences,10867.7,10836,10899,14.9057619047132,20.8382660826983
+Scenario1,Worker,Nurse[2],[Resource],ResourceState,TimeBusy,Percent,19.7803489767916,19.7115360342057,19.8305753387156,0.0266425629515834,0.0372463225603103
+Scenario1,Worker,Nurse[2],[Resource],ResourceState,TimeBusy,Total (Minutes),103965.514222017,103603.833395785,104229.503980289,140.033310873521,195.766671376989
+Scenario1,Worker,Nurse[2],[Resource],ResourceState,TimeIdle,Average (Minutes),38.7935992733346,38.6865019903435,38.9403125038493,0.058742524819558,0.0821220928111295
+Scenario1,Worker,Nurse[2],[Resource],ResourceState,TimeIdle,Occurrences,10868.7,10837,10900,14.9057619047132,20.8382660826983
+Scenario1,Worker,Nurse[2],[Resource],ResourceState,TimeIdle,Percent,80.2196510232084,80.1694246612844,80.2884639657943,0.0266425629515809,0.0372463225603068
+Scenario1,Worker,Nurse[2],[Resource],ResourceState,TimeIdle,Total (Minutes),421634.485777983,421370.496019711,421996.166604215,140.033310873511,195.766671376974
+Scenario1,Worker,Nurse[3],[Object],Travel,DistanceTraveled,Total (Meters),334806.817516098,332793.30866925,337803.741030551,1231.86144444244,1722.14320344079
+Scenario1,Worker,Nurse[3],[Resource],Capacity,ScheduledUtilization,Percent,15.001188239496,14.9160226391431,15.0776415115097,0.0408532390980543,0.0571128582428357
+Scenario1,Worker,Nurse[3],[Resource],Capacity,UnitsAllocated,Total,8242.7,8199,8291,23.2056898272816,32.4415714100836
+Scenario1,Worker,Nurse[3],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[3],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[3],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[3],[Resource],Capacity,UnitsUtilized,Average,0.15001188239496,0.149160226391431,0.150776415115097,0.000408532390980545,0.00057112858242836
+Scenario1,Worker,Nurse[3],[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[3],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[3],[Resource],ResourceState,TimeBusy,Average (Minutes),9.56561655642516,9.53093706197169,9.61631886718782,0.0173103144501578,0.024199832306023
+Scenario1,Worker,Nurse[3],[Resource],ResourceState,TimeBusy,Occurrences,8242.7,8199,8291,23.2056898272816,32.4415714100836
+Scenario1,Worker,Nurse[3],[Resource],ResourceState,TimeBusy,Percent,15.001188239496,14.9160226391431,15.0776415115097,0.0408532390980543,0.0571128582428357
+Scenario1,Worker,Nurse[3],[Resource],ResourceState,TimeBusy,Total (Minutes),78846.2453867908,78398.6149913362,79248.0837844948,214.724624699373,300.185182924344
+Scenario1,Worker,Nurse[3],[Resource],ResourceState,TimeIdle,Average (Minutes),54.1942111099379,53.8566088783397,54.5367542693492,0.173813077012691,0.242990809231812
+Scenario1,Worker,Nurse[3],[Resource],ResourceState,TimeIdle,Occurrences,8243.7,8200,8292,23.2056898272816,32.4415714100836
+Scenario1,Worker,Nurse[3],[Resource],ResourceState,TimeIdle,Percent,84.998811760504,84.9223584884903,85.0839773608569,0.0408532390980567,0.0571128582428392
+Scenario1,Worker,Nurse[3],[Resource],ResourceState,TimeIdle,Total (Minutes),446753.754613209,446351.916215505,447201.385008664,214.724624699376,300.185182924349
+Scenario1,Worker,Nurse[4],[Object],Travel,DistanceTraveled,Total (Meters),226479.116341209,223807.444196863,228872.603537933,1182.15639599774,1652.65550923466
+Scenario1,Worker,Nurse[4],[Resource],Capacity,ScheduledUtilization,Percent,9.98152041190165,9.86929765315383,10.0950606014121,0.0543744676743503,0.0760155457162448
+Scenario1,Worker,Nurse[4],[Resource],Capacity,UnitsAllocated,Total,5470.9,5392,5540,31.8567453836703,44.5357534272559
+Scenario1,Worker,Nurse[4],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[4],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[4],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[4],[Resource],Capacity,UnitsUtilized,Average,0.0998152041190165,0.0986929765315383,0.100950606014121,0.000543744676743505,0.00076015545716245
+Scenario1,Worker,Nurse[4],[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[4],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[4],[Resource],ResourceState,TimeBusy,Average (Minutes),9.58954706021798,9.52513459285823,9.65876415140078,0.0276641020746012,0.0386744350040358
+Scenario1,Worker,Nurse[4],[Resource],ResourceState,TimeBusy,Occurrences,5470.9,5392,5540,31.8567453836703,44.5357534272559
+Scenario1,Worker,Nurse[4],[Resource],ResourceState,TimeBusy,Percent,9.98152041190165,9.86929765315383,10.0950606014121,0.0543744676743503,0.0760155457162448
+Scenario1,Worker,Nurse[4],[Resource],ResourceState,TimeBusy,Total (Minutes),52462.8712849551,51873.0284649765,53059.6385210221,285.792202096387,399.537708284585
+Scenario1,Worker,Nurse[4],[Resource],ResourceState,TimeIdle,Average (Minutes),86.4723350639181,85.28070050153,87.8410850241097,0.550955538015921,0.770236246513616
+Scenario1,Worker,Nurse[4],[Resource],ResourceState,TimeIdle,Occurrences,5471.9,5393,5541,31.8567453836703,44.5357534272559
+Scenario1,Worker,Nurse[4],[Resource],ResourceState,TimeIdle,Percent,90.0184795880983,89.9049393985879,90.1307023468462,0.0543744676743478,0.0760155457162412
+Scenario1,Worker,Nurse[4],[Resource],ResourceState,TimeIdle,Total (Minutes),473137.128715045,472540.361478978,473726.971535023,285.792202096382,399.537708284578
+Scenario1,Worker,Nurse[5],[Object],Travel,DistanceTraveled,Total (Meters),121552.628055928,118855.695745837,124020.331896023,1265.77859649639,1769.55940690531
+Scenario1,Worker,Nurse[5],[Resource],Capacity,ScheduledUtilization,Percent,5.2763611969223,5.20136601123358,5.35969853727725,0.0366925589101972,0.0512962242865291
+Scenario1,Worker,Nurse[5],[Resource],Capacity,UnitsAllocated,Total,2895.2,2851,2931,21.9821713977487,30.7310917476096
+Scenario1,Worker,Nurse[5],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[5],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[5],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[5],[Resource],Capacity,UnitsUtilized,Average,0.052763611969223,0.0520136601123358,0.0535969853727725,0.000366925589101971,0.00051296224286529
+Scenario1,Worker,Nurse[5],[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[5],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[5],[Resource],ResourceState,TimeBusy,Average (Minutes),9.57910996787344,9.49729950087585,9.68726805774734,0.0497285518540655,0.0695205519896712
+Scenario1,Worker,Nurse[5],[Resource],ResourceState,TimeBusy,Occurrences,2895.2,2851,2931,21.9821713977487,30.7310917476096
+Scenario1,Worker,Nurse[5],[Resource],ResourceState,TimeBusy,Percent,5.2763611969223,5.20136601123358,5.35969853727725,0.0366925589101972,0.0512962242865291
+Scenario1,Worker,Nurse[5],[Resource],ResourceState,TimeBusy,Total (Minutes),27732.5544510236,27338.3797550437,28170.5755119293,192.856089631996,269.612954849997
+Scenario1,Worker,Nurse[5],[Resource],ResourceState,TimeIdle,Average (Minutes),171.92182202288,169.757607972267,174.6464385645,1.35941797036174,1.9004673202946
+Scenario1,Worker,Nurse[5],[Resource],ResourceState,TimeIdle,Occurrences,2896.2,2852,2932,21.9821713977487,30.7310917476096
+Scenario1,Worker,Nurse[5],[Resource],ResourceState,TimeIdle,Percent,94.7236388030777,94.6403014627228,94.7986339887664,0.0366925589101957,0.0512962242865269
+Scenario1,Worker,Nurse[5],[Resource],ResourceState,TimeIdle,Total (Minutes),497867.445548976,497429.424488071,498261.620244956,192.856089631979,269.612954849972
+Scenario1,Worker,Nurse[6],[Object],Travel,DistanceTraveled,Total (Meters),47486.7152750167,45737.6970092615,49161.0175388735,852.905645319039,1192.36271813612
+Scenario1,Worker,Nurse[6],[Resource],Capacity,ScheduledUtilization,Percent,2.05804958201868,1.9952020599525,2.12243873553662,0.0293352045840416,0.0410106375387196
+Scenario1,Worker,Nurse[6],[Resource],Capacity,UnitsAllocated,Total,1123.2,1087,1161,17.00366128103,23.7711309505178
+Scenario1,Worker,Nurse[6],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[6],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[6],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[6],[Resource],Capacity,UnitsUtilized,Average,0.0205804958201868,0.019952020599525,0.0212243873553662,0.000293352045840416,0.000410106375387196
+Scenario1,Worker,Nurse[6],[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[6],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[6],[Resource],ResourceState,TimeBusy,Average (Minutes),9.63101895219505,9.49117828933477,9.698138238726,0.0443712243408062,0.0620310041941869
+Scenario1,Worker,Nurse[6],[Resource],ResourceState,TimeBusy,Occurrences,1123.2,1087,1161,17.00366128103,23.7711309505178
+Scenario1,Worker,Nurse[6],[Resource],ResourceState,TimeBusy,Percent,2.05804958201868,1.9952020599525,2.12243873553662,0.0293352045840416,0.0410106375387196
+Scenario1,Worker,Nurse[6],[Resource],ResourceState,TimeBusy,Total (Minutes),10817.1086030902,10486.7820271103,11155.5379939805,154.185835293723,215.55191090351
+Scenario1,Worker,Nurse[6],[Resource],ResourceState,TimeIdle,Average (Minutes),458.098594001365,442.723289161807,473.449648872141,7.07448076497059,9.8901293016611
+Scenario1,Worker,Nurse[6],[Resource],ResourceState,TimeIdle,Occurrences,1124.2,1088,1162,17.00366128103,23.7711309505178
+Scenario1,Worker,Nurse[6],[Resource],ResourceState,TimeIdle,Percent,97.9419504179813,97.8775612644634,98.0047979400475,0.0293352045840414,0.0410106375387193
+Scenario1,Worker,Nurse[6],[Resource],ResourceState,TimeIdle,Total (Minutes),514782.89139691,514444.46200602,515113.21797289,154.185835293719,215.551910903506
+Scenario1,Worker,Nurse[7],[Object],Travel,DistanceTraveled,Total (Meters),12561.4614762792,11474.2088350849,13494.2022868056,403.674283418331,564.336944490835
+Scenario1,Worker,Nurse[7],[Resource],Capacity,ScheduledUtilization,Percent,0.54362547135972,0.475017775259272,0.577477800117548,0.0236036979224463,0.0329979870192373
+Scenario1,Worker,Nurse[7],[Resource],Capacity,UnitsAllocated,Total,299.7,274,322,10.2335884400341,14.30656414999
+Scenario1,Worker,Nurse[7],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[7],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[7],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[7],[Resource],Capacity,UnitsUtilized,Average,0.0054362547135972,0.00475017775259272,0.00577477800117548,0.000236036979224463,0.000329979870192373
+Scenario1,Worker,Nurse[7],[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[7],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[7],[Resource],ResourceState,TimeBusy,Average (Minutes),9.52970006030856,9.11201980570342,9.91639300046743,0.16343493625811,0.228482160839993
+Scenario1,Worker,Nurse[7],[Resource],ResourceState,TimeBusy,Occurrences,299.7,274,322,10.2335884400341,14.30656414999
+Scenario1,Worker,Nurse[7],[Resource],ResourceState,TimeBusy,Percent,0.54362547135972,0.475017775259272,0.577477800117548,0.0236036979224463,0.0329979870192373
+Scenario1,Worker,Nurse[7],[Resource],ResourceState,TimeBusy,Total (Minutes),2857.29547746669,2496.69342676274,3035.22331741783,124.061036280378,173.437419773111
+Scenario1,Worker,Nurse[7],[Resource],ResourceState,TimeIdle,Average (Minutes),1742.0802701137,1617.84760582843,1902.1938420845,61.2397883559278,85.6132690678118
+Scenario1,Worker,Nurse[7],[Resource],ResourceState,TimeIdle,Occurrences,300.7,275,323,10.2335884400341,14.30656414999
+Scenario1,Worker,Nurse[7],[Resource],ResourceState,TimeIdle,Percent,99.4563745286403,99.4225221998825,99.5249822247407,0.0236036979224491,0.0329979870192412
+Scenario1,Worker,Nurse[7],[Resource],ResourceState,TimeIdle,Total (Minutes),522742.704522533,522564.776682582,523103.306573237,124.061036280386,173.437419773122
+Scenario1,Worker,Nurse[8],[Object],Travel,DistanceTraveled,Total (Meters),2363.75409872017,1922.88669225129,2729.29728232879,203.253970832592,284.149200399832
+Scenario1,Worker,Nurse[8],[Resource],Capacity,ScheduledUtilization,Percent,0.105682942496028,0.0908625350781383,0.125238415451701,0.00829019985305877,0.0115897054790711
+Scenario1,Worker,Nurse[8],[Resource],Capacity,UnitsAllocated,Total,57.6,48,65,3.89169195081008,5.44058820349418
+Scenario1,Worker,Nurse[8],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[8],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[8],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[8],[Resource],Capacity,UnitsUtilized,Average,0.00105682942496028,0.000908625350781383,0.00125238415451701,8.29019985305877E-05,0.000115897054790711
+Scenario1,Worker,Nurse[8],[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[8],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[8],[Resource],ResourceState,TimeBusy,Average (Minutes),9.63711031159275,8.94306909225185,10.1269709479099,0.241798893870267,0.338035031096096
+Scenario1,Worker,Nurse[8],[Resource],ResourceState,TimeBusy,Occurrences,57.6,48,65,3.89169195081008,5.44058820349418
+Scenario1,Worker,Nurse[8],[Resource],ResourceState,TimeBusy,Percent,0.105682942496028,0.0908625350781383,0.125238415451701,0.00829019985305877,0.0115897054790711
+Scenario1,Worker,Nurse[8],[Resource],ResourceState,TimeBusy,Total (Minutes),555.469545759122,477.573484370695,658.253111614142,43.5732904276769,60.9154919979979
+Scenario1,Worker,Nurse[8],[Resource],ResourceState,TimeIdle,Average (Minutes),9033.07746145866,7953.66283164221,10716.7842146047,629.646529206822,880.246309952826
+Scenario1,Worker,Nurse[8],[Resource],ResourceState,TimeIdle,Occurrences,58.6,49,66,3.89169195081008,5.44058820349418
+Scenario1,Worker,Nurse[8],[Resource],ResourceState,TimeIdle,Percent,99.894317057504,99.8747615845483,99.9091374649219,0.00829019985305952,0.0115897054790722
+Scenario1,Worker,Nurse[8],[Resource],ResourceState,TimeIdle,Total (Minutes),525044.530454241,524941.746888386,525122.426515629,43.5732904276796,60.9154919980017
+Scenario1,Worker,Nurse[9],[Object],Travel,DistanceTraveled,Total (Meters),367.49928625325,132.05268980113,692.161615382047,124.64863546472,174.258883864083
+Scenario1,Worker,Nurse[9],[Resource],Capacity,ScheduledUtilization,Percent,0.0160430460102368,0.00537379942169719,0.029669307459556,0.00509475576960936,0.00712247230515015
+Scenario1,Worker,Nurse[9],[Resource],Capacity,UnitsAllocated,Total,8.8,3,15,2.75597056588056,3.8528488738133
+Scenario1,Worker,Nurse[9],[Resource],Capacity,UnitsScheduled,Average,1,1,1,0,0
+Scenario1,Worker,Nurse[9],[Resource],Capacity,UnitsScheduled,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[9],[Resource],Capacity,UnitsScheduled,Minimum,1,1,1,0,0
+Scenario1,Worker,Nurse[9],[Resource],Capacity,UnitsUtilized,Average,0.000160430460102368,5.37379942169719E-05,0.00029669307459556,5.09475576960936E-05,7.12247230515015E-05
+Scenario1,Worker,Nurse[9],[Resource],Capacity,UnitsUtilized,Maximum,1,1,1,0,0
+Scenario1,Worker,Nurse[9],[Resource],Capacity,UnitsUtilized,Minimum,0,0,0,0,0
+Scenario1,Worker,Nurse[9],[Resource],ResourceState,TimeBusy,Average (Minutes),9.6916788048428,7.29345738865385,10.6422853017402,0.733283648802913,1.02513107921141
+Scenario1,Worker,Nurse[9],[Resource],ResourceState,TimeBusy,Occurrences,8.8,3,15,2.75597056588056,3.8528488738133
+Scenario1,Worker,Nurse[9],[Resource],ResourceState,TimeBusy,Percent,0.0160430460102368,0.00537379942169719,0.029669307459556,0.00509475576960936,0.00712247230515015
+Scenario1,Worker,Nurse[9],[Resource],ResourceState,TimeBusy,Total (Minutes),84.3222498298044,28.2446897604405,155.941880007426,26.7780363250668,37.4357144358692
+Scenario1,Worker,Nurse[9],[Resource],ResourceState,TimeIdle,Average (Minutes),64556.6954711254,32840.2536324995,131392.93882756,23429.8776052701,32754.9860882515
+Scenario1,Worker,Nurse[9],[Resource],ResourceState,TimeIdle,Occurrences,9.8,4,16,2.75597056588056,3.8528488738133
+Scenario1,Worker,Nurse[9],[Resource],ResourceState,TimeIdle,Percent,99.9839569539897,99.9703306925404,99.9946262005783,0.00509475576960829,0.00712247230514865
+Scenario1,Worker,Nurse[9],[Resource],ResourceState,TimeIdle,Total (Minutes),525515.67775017,525444.058119993,525571.75531024,26.7780363250644,37.4357144358658
